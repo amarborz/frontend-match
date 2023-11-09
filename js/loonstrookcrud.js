@@ -1,33 +1,37 @@
 async function getLoonstrookById(id) {
-    try {
-        let response = await fetch(`http://localhost:8080/api/loonstrook/${id}`)
-        let loonstrook = await response.json();
-        displayLoonstrookInfo(loonstrook);
-    } catch (error) {
-        displayLoonstrookNotFound();
-        console.error("Error fetching data:", error);
-    }
+	try {
+		let response = await fetch(
+			`https://yc2310-match-backend.azurewebsites.net/api/loonstrook/${id}`
+		)
+		let loonstrook = await response.json()
+		displayLoonstrookInfo(loonstrook)
+	} catch (error) {
+		displayLoonstrookNotFound()
+		console.error('Error fetching data:', error)
+	}
 }
 
 async function postLoonstrook(loonstrook) {
-    try {
-        await fetch(`http://localhost:8080/api/loonstrook`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(loonstrook)
-        });
-
-    } catch (error) {
-        console.error("Error fetching data:", error);
-    }
+	try {
+		await fetch(
+			`https://yc2310-match-backend.azurewebsites.net/api/loonstrook`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(loonstrook),
+			}
+		)
+	} catch (error) {
+		console.error('Error fetching data:', error)
+	}
 }
 
 function displayLoonstrookInfo(loonstrook) {
-    var loonstrookInfoDiv = document.getElementById("loonstrookInfo");
+	var loonstrookInfoDiv = document.getElementById('loonstrookInfo')
 
-    loonstrookInfoDiv.innerHTML = `
+	loonstrookInfoDiv.innerHTML = `
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
@@ -43,22 +47,25 @@ function displayLoonstrookInfo(loonstrook) {
     </div>
 `
 
-// Add Bootstrap classes for aesthetics
-loonstrookInfoDiv.querySelector('.card').classList.add('bg-light', 'text-dark')
-loonstrookInfoDiv.querySelector('h3').classList.add('text-primary')
-loonstrookInfoDiv.querySelector('.card-title').classList.add('mb-4')
+	// Add Bootstrap classes for aesthetics
+	loonstrookInfoDiv
+		.querySelector('.card')
+		.classList.add('bg-light', 'text-dark')
+	loonstrookInfoDiv.querySelector('h3').classList.add('text-primary')
+	loonstrookInfoDiv.querySelector('.card-title').classList.add('mb-4')
 }
 
 function displayLoonstrookNotFound() {
-    var loonstrook = document.getElementById("loonstrookInfo");
-    loonstrook.innerHTML = "<p>Loonstrook not found.</p>";
+	var loonstrook = document.getElementById('loonstrookInfo')
+	loonstrook.innerHTML = '<p>Loonstrook not found.</p>'
 }
 
 function dummyLoonstrook() {
-    let loonstrook = { // placeholder data
-        salarisBedrag: 2500,
-        periode: "2023-12-31",
-        uitbetaald: true
-    }
-    return loonstrook;
+	let loonstrook = {
+		// placeholder data
+		salarisBedrag: 2500,
+		periode: '2023-12-31',
+		uitbetaald: true,
+	}
+	return loonstrook
 }

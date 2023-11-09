@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,53 +35,53 @@
 			<div class="row" id="vacatures-row"></div>
 		</div>
 
-    <!-- Per vacature knopje 'informatie' die leidt naar de vacature -->
-    <div
-      class="modal fade"
-      id="vacatureModal"
-      tabindex="-1"
-      aria-labelledby="vacatureModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="vacatureModalLabel">
-              Vacature Details
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body" id="vacatureInfo">
-            <!-- Vacature details will be displayed here -->
-          </div>
-        </div>
-      </div>
-    </div>
+		<!-- Per vacature knopje 'informatie' die leidt naar de vacature -->
+		<div
+			class="modal fade"
+			id="vacatureModal"
+			tabindex="-1"
+			aria-labelledby="vacatureModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="vacatureModalLabel">
+							Vacature Details
+						</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body" id="vacatureInfo">
+						<!-- Vacature details will be displayed here -->
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <script>
-      function gotoVacature(id) {
-        getVacatureById(id);
-      }
+		<script>
+			function gotoVacature(id) {
+				getVacatureById(id)
+			}
 
-      function loadVacatures() {
-        fetch("http://20.126.244.168:8080/api/vacature")
-          .then((res) => res.json())
-          .then((data) => {
-            let html = "";
+			function loadVacatures() {
+				fetch('https://yc2310-match-backend.azurewebsites.net/api/vacature')
+					.then((res) => res.json())
+					.then((data) => {
+						let html = ''
 
-            data.forEach((vacature) => {
-              // Show only the first 100 characters of the omschrijving on the main page
-              const summary =
-                vacature.omschrijving.length > 100
-                  ? vacature.omschrijving.substring(0, 100) + "..."
-                  : vacature.omschrijving;
+						data.forEach((vacature) => {
+							// Show only the first 100 characters of the omschrijving on the main page
+							const summary =
+								vacature.omschrijving.length > 100
+									? vacature.omschrijving.substring(0, 100) + '...'
+									: vacature.omschrijving
 
-              html += `
+							html += `
                         <div class="col-12 col-md-4 col-lg-3 mt-4">
                             <div class="card">
                                 <img src="https://webneel.com/daily/sites/default/files/images/daily/08-2018/1-nature-photography-spring-season-mumtazshamsee.jpg" class="card-img-top" alt="...">
@@ -97,12 +96,12 @@
                                 </div>
                             </div>
                         </div>
-                        `;
-            });
+                        `
+						})
 
-            document.getElementById("vacatures-row").innerHTML = html;
-          });
-      }
+						document.getElementById('vacatures-row').innerHTML = html
+					})
+			}
 
 			document.addEventListener('DOMContentLoaded', function (event) {
 				loadVacatures()
@@ -113,5 +112,4 @@
 			loadFooter()
 		</script>
 	</body>
-
 </html>

@@ -1,7 +1,7 @@
 async function getTraineeById(traineeId) {
 	try {
 		let response = await fetch(
-			`http://20.126.244.168:8080/api/trainee/${traineeId}`,
+			`https://yc2310-match-backend.azurewebsites.net/api/trainee/${traineeId}`
 		)
 		let trainee = await response.json()
 		return trainee
@@ -13,14 +13,14 @@ async function getTraineeById(traineeId) {
 async function updateTrainee(traineeId, updatedData) {
 	try {
 		const response = await fetch(
-			`http://20.126.244.168:8080/api/trainee/${traineeId}`,
+			`https://yc2310-match-backend.azurewebsites.net/api/trainee/${traineeId}`,
 			{
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(updatedData),
-			},
+			}
 		)
 
 		if (response.ok) {
@@ -36,7 +36,7 @@ async function updateTrainee(traineeId, updatedData) {
 
 async function postTrainee(trainee) {
 	try {
-		await fetch(`http://20.126.244.168:8080/api/trainee`, {
+		await fetch(`https://yc2310-match-backend.azurewebsites.net/api/trainee`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

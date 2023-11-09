@@ -2,7 +2,7 @@ async function getOpdrachtgeverById() {
 	var opdrachtgeverId = document.getElementById('opdrachtgeverId').value
 	try {
 		let response = await fetch(
-			`http://20.126.244.168:8080/api/opdrachtgever/${opdrachtgeverId}`,
+			`https://yc2310-match-backend.azurewebsites.net/api/opdrachtgever/${opdrachtgeverId}`
 		)
 		let opdrachtgever = await response.json()
 		displayOpdrachtgeverInfo(opdrachtgever)
@@ -14,13 +14,16 @@ async function getOpdrachtgeverById() {
 
 async function postOpdrachtgever(opdrachtgever) {
 	try {
-		await fetch(`http://20.126.244.168:8080/api/opdrachtgever`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(opdrachtgever),
-		})
+		await fetch(
+			`https://yc2310-match-backend.azurewebsites.net/api/opdrachtgever`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(opdrachtgever),
+			}
+		)
 	} catch (error) {
 		console.error('Error fetching data:', error)
 	}

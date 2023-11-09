@@ -2,7 +2,7 @@ async function getTalentmanagerById() {
 	var talentmanagerId = document.getElementById('talentmanagerId').value
 	try {
 		let response = await fetch(
-			`http://20.126.244.168:8080/api/talentmanager/${talentmanagerId}`,
+			`https://yc2310-match-backend.azurewebsites.net/api/talentmanager/${talentmanagerId}`
 		)
 		let talentmanager = await response.json()
 		displayTalentmanagerInfo(talentmanager)
@@ -14,13 +14,16 @@ async function getTalentmanagerById() {
 
 async function postTalentmanager(talentmanager) {
 	try {
-		await fetch(`http://20.126.244.168:8080/api/talentmanager`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(talentmanager),
-		})
+		await fetch(
+			`https://yc2310-match-backend.azurewebsites.net/api/talentmanager`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(talentmanager),
+			}
+		)
 	} catch (error) {
 		console.error('Error fetching data:', error)
 	}

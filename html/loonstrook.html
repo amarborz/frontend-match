@@ -20,48 +20,48 @@
 		<script src="../js/footer.js"></script>
 	</head>
 
-  <body class="bg-light">
-    <script>
-      loadNavBar();
-    </script>
+	<body class="bg-light">
+		<script>
+			loadNavBar()
+		</script>
 
-    <!-- Overzicht loonstroken -->
-    <div class="container my-5">
-      <div class="row">
-        <div class="col-12">
-          <h1 class="display-4 text-center">Loonstroken</h1>
-        </div>
-      </div>
-      <div class="row" id="loonstroken-row"></div>
-    </div>
+		<!-- Overzicht loonstroken -->
+		<div class="container my-5" style="margin-top: 100px !important">
+			<div class="row">
+				<div class="col-12">
+					<h1 class="display-4 text-center">Loonstroken</h1>
+				</div>
+			</div>
+			<div class="row" id="loonstroken-row"></div>
+		</div>
 
-    <!-- Per loonstrook knopje 'informatie' die leidt naar de loonstrook -->
-    <div
-      class="modal fade"
-      id="loonstrookModal"
-      tabindex="-1"
-      aria-labelledby="loonstrookModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="loonstrookModalLabel">
-              Loonstrook Details
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body" id="loonstrookInfo">
-            <!-- Loonstrook details will be displayed here (see loonstrookcrud.js) -->
-          </div>
-        </div>
-      </div>
-    </div>
+		<!-- Per loonstrook knopje 'informatie' die leidt naar de loonstrook -->
+		<div
+			class="modal fade"
+			id="loonstrookModal"
+			tabindex="-1"
+			aria-labelledby="loonstrookModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="loonstrookModalLabel">
+							Loonstrook Details
+						</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body" id="loonstrookInfo">
+						<!-- Loonstrook details will be displayed here (see loonstrookcrud.js) -->
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<script>
 			function gotoLoonstrook(id) {
@@ -69,7 +69,7 @@
 			}
 
 			function loadLoonstroken() {
-				fetch('http://localhost:8080/api/loonstrook')
+				fetch('https://yc2310-match-backend.azurewebsites.net/api/loonstrook')
 					.then((res) => res.json())
 					.then((data) => {
 						let html = ''
