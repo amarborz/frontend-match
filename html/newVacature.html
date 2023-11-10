@@ -50,12 +50,22 @@
 					/>
 				</div>
 				<div class="mb-3">
-					<label for="standplaats" class="form-label">Standplaats</label>
+					<label for="standplaats" class="form-label">Plaats</label>
 					<input
 						type="text"
 						class="form-control"
 						id="standplaats"
 						placeholder="Rotterdam"
+						required
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="adres" class="form-label">Adres</label>
+					<input
+						type="text"
+						class="form-control"
+						id="adres"
+						placeholder="Straatweg 34"
 						required
 					/>
 				</div>
@@ -145,7 +155,8 @@
 				let data = [
 					{
 						titel: document.getElementById('vacatureNaam').value,
-						standplaats: document.getElementById('standplaats').value,
+						plaats: document.getElementById('standplaats').value,
+						adres: document.getElementById('adres').value,
 						omschrijving: document.getElementById('omschrijving').value,
 						vereisten: document.getElementById('vereisten').value,
 						uren: document.getElementById('uren').value,

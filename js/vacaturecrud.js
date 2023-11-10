@@ -51,7 +51,8 @@ function displayVacatureInfo(vacature) {
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">${vacature.titel}</h3>
-                            <p class="card-text"><strong>Standplaats:</strong> ${vacature.standplaats}</p>
+                            <p class="card-text"><strong>Plaats:</strong> ${vacature.plaats}</p>
+                            <p class="card-text"><strong>Adres:</strong> ${vacature.adres}</p>
                             <p class="card-text"><strong>Omschrijving:</strong> ${vacature.omschrijving}</p>
                             <p class="card-text"><strong>Vereisten:</strong> ${vacature.vereisten}</p>
                             <p class="card-text"><strong>Uren:</strong> ${vacature.uren}</p>
