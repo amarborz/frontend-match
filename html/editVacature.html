@@ -37,7 +37,7 @@
 				Het is gelukt!
 			</div>
 		</div>
-		<form onsubmit="createVacature(); return false" action="#" class="m-5">
+		<form onsubmit="editVacature(); return false" action="" class="m-5">
 			<div class="m-4">
 				<div class="mb-3">
 					<label for="vacatureNaam" class="form-label">Vacature Naam</label>
@@ -141,13 +141,16 @@
 				</div>
 
 				<div class="d-flex justify-content-center">
-					<button type="submit" class="btn btn-primary m-2">Aanmaken</button>
+					<button type="submit" class="btn btn-primary m-2">Save</button>
 				</div>
 			</div>
 		</form>
 
 		<script>
-			function createVacature() {
+			let id = window.location.href.split('#')
+			console.log(id[1])
+
+			function editVacature() {
 				scroll(0, 0)
 				let spinner = document.getElementById('spinnerId')
 				let notification = document.getElementById('notification')
@@ -155,6 +158,7 @@
 
 				let data = [
 					{
+						id: id[1],
 						titel: document.getElementById('vacatureNaam').value,
 						plaats: document.getElementById('standplaats').value,
 						adres: document.getElementById('adres').value,
@@ -168,7 +172,8 @@
 					},
 				]
 
-				postVacature(data[0])
+				console.log(data)
+				putVacature(data[0])
 
 				spinner.setAttribute('hidden', true)
 				notification.removeAttribute('hidden')
@@ -178,9 +183,26 @@
 				}, '4000')
 			}
 
-			// document.addEventListener('DOMContentLoaded', function (event) {
-			// 	loadVacatures()
-			// })
+			const loadVacature = async (id) => {
+				const vacatureData = await getVacatureByIdToEdit(id[1])
+				console.log(vacatureData)
+				document.getElementById('vacatureNaam').value = vacatureData.titel
+				document.getElementById('standplaats').value = vacatureData.plaats
+				document.getElementById('adres').value = vacatureData.adres
+				document.getElementById('omschrijving').value =
+					vacatureData.omschrijving
+				document.getElementById('vereisten').value = vacatureData.vereisten
+				document.getElementById('uren').value = vacatureData.uren
+				document.getElementById('duratie').value = vacatureData.duur
+				document.getElementById('publicatieDatum').value =
+					vacatureData.publicatieDatum
+				document.getElementById('startDatum').value = vacatureData.startDatum
+				document.getElementById('eindDatum').value = vacatureData.eindDatum
+			}
+
+			document.addEventListener('DOMContentLoaded', function (event) {
+				loadVacature(id)
+			})
 		</script>
 
 		<script>

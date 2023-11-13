@@ -1,13 +1,27 @@
-async function getOpdrachtgeverById() {
-	var opdrachtgeverId = document.getElementById('opdrachtgeverId').value
+async function getOpdrachtgeverById(opdrachtgeverId) {
 	try {
 		let response = await fetch(
-			`https://yc2310-match-backend.azurewebsites.net/api/opdrachtgever/${opdrachtgeverId}`
+			`${backendPath}api/opdrachtgever/${opdrachtgeverId}`
 		)
 		let opdrachtgever = await response.json()
-		displayOpdrachtgeverInfo(opdrachtgever)
+		return opdrachtgever
 	} catch (error) {
-		displayOpdrachtgeverNotFound()
+		console.error('Error fetching data:', error)
+	}
+}
+
+async function getOpdrachtVanOpdrachtgeverById(opdrachtgeverId, opdrachtId) {
+	try {
+		let response = await fetch(
+			`${backendPath}api/opdrachtgever/${opdrachtgeverId}/opdrachten`
+		)
+		let opdrachten = await response.json()
+		for (let opdracht of opdrachten) {
+			if (opdracht.opdrachtId == opdrachtId) {
+				displayOpdrachtVanOpdrachtgeverInfo(opdracht)
+			}
+		}
+	} catch (error) {
 		console.error('Error fetching data:', error)
 	}
 }
@@ -15,7 +29,7 @@ async function getOpdrachtgeverById() {
 async function postOpdrachtgever(opdrachtgever) {
 	try {
 		await fetch(
-			`https://yc2310-match-backend.azurewebsites.net/api/opdrachtgever`,
+			`${backendPath}api/opdrachtgever`,
 			{
 				method: 'POST',
 				headers: {
@@ -41,6 +55,26 @@ function displayOpdrachtgeverInfo(opdrachtgever) {
         <p><strong>Omschrijving:</strong> ${opdrachtgever.omschrijving}</p>
     `
 }
+
+function displayOpdrachtVanOpdrachtgeverInfo(opdracht) {
+	let opdrachtVanOpdrachtgeverInfoDiv = document.getElementById('opdrachtVanOpdrachtgeverInfo')
+	opdrachtVanOpdrachtgeverInfoDiv.innerHTML = `
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="text-primary">${opdracht.naam}</h3>
+			<p class="card-text"><strong>Titel:</strong> ${opdracht.titel}</p>
+			<p class="card-text"><strong>Uren:</strong> ${opdracht.uren}</p>
+            <p class="card-text"><strong>Duur:</strong> ${opdracht.duur}</p>
+            <p class="card-text"><strong>E-mail:</strong> ${opdracht.email}</p>
+            <p class="card-text"><strong>Telefoon:</strong> ${opdracht.telefoon}</p>
+        </div>
+        <div class="col-md-6">
+            <img src="../img/${opdracht.foto}" class="img-fluid">
+        </div>
+    </div>
+        `
+}
+
 
 function displayOpdrachtgeverNotFound() {
 	var opdrachtgeverInfoDiv = document.getElementById('opdrachtgeverInfo')

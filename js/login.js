@@ -1,3 +1,6 @@
+let ACCOUNTTYPE;
+let ID;
+
 document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("login-form");
   const resetPasswordButton = document.getElementById("resetPasswordButton");
@@ -7,24 +10,37 @@ document.addEventListener("DOMContentLoaded", function () {
   const signUpForm = document.getElementById("sign-up-form");
 
   // Handle form submission
-  loginForm.addEventListener("submit", function (e) {
+  loginForm.addEventListener("submit", async function (e) {
     e.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    // TODO: Implement your login logic here
-    if (email === "your@email.com" && password === "yourpassword") {
-      // If login is successful, show success message
-      successMessage.style.display = "block";
-      errorAlert.style.display = "none";
+    await fetch(`${backendPath}api/persoon`).then((res) => res.json())
+      .then((data) => {
+        data.forEach((persoon) => {
+          if (persoon.email == email && persoon.wachtwoord == password) {
+            ACCOUNTTYPE = persoon.accountType
+            ID = persoon.id
+            localStorage.setItem('ID', ID);
+            localStorage.setItem('AccountType', ACCOUNTTYPE);
+            successMessage.style.display = "block";
+            errorAlert.style.display = "none";
+          }
+        })
+      })
 
-      // Redirect to dashboard.html when login is successful
-      window.location.href = 'dashboard.html';
+    if (ACCOUNTTYPE == "trainee") {
+      window.location.href = '/html/homeTrainees.html';
+    } else if (ACCOUNTTYPE == "talentmanager") {
+      window.location.href = '/html/homeTalent.html';
+    } else if (ACCOUNTTYPE == "opdrachtgever") {
+      window.location.href = '/html/homeOpdracht.html';
     } else {
       // Show an error message for incorrect login
       errorAlert.style.display = "block";
       successMessage.style.display = "none";
     }
+
   });
 
   // Handle reset password button click

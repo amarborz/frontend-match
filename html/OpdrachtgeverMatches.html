@@ -4,13 +4,14 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Dashboard voor trainees!</title>
+	<title>Matches van opdrachtgevr!</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 		crossorigin="anonymous"></script>
 	<script src="../js/vacaturecrud.js"></script>
+	<script src="../js/opdrachtgevercrud.js"></script>
 	<script src="../js/loonstrookcrud.js"></script>
 	<script src="../js/navBar.js"></script>
 	<script src="../js/footer.js"></script>
@@ -18,30 +19,30 @@
 
 <body class="bg-light">
 	<script>
-		let traineeId
+		let opdrachtgeverId // opdrachtgeverId is afhankelijk van wie er ingelogd is
 		loadNavBar()
 	</script>
-	<!-- Overzicht vacatures -->
+	<!-- Overzicht trainees -->
 	<div class="container my-5">
 		<div class="row">
 			<div class="col-12">
-				<h1 id="trainee-id" class="display-4 text-center mt-5">Vacatures</h1>
+				<h1 id="opdrachtgever_id_matches" class="display-4 text-center mt-5">Matches</h1>
 			</div>
 		</div>
-		<div class="row" id="vacatures-row"></div>
+		<div class="row" id="trainees-row"></div>
 	</div>
 
 	<!-- Per vacature knopje 'informatie' die leidt naar de vacature -->
-	<div class="modal fade" id="vacatureModal" tabindex="-1" aria-labelledby="vacatureModalLabel" aria-hidden="true">
+	<div class="modal fade" id="matchModal" tabindex="-1" aria-labelledby="matchModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="vacatureModalLabel">
-						Vacature Details
+					<h5 class="modal-title" id="matchModalLabel">
+						Opdracht
 					</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div class="modal-body" id="vacatureInfo">
+				<div class="modal-body" id="opdrachtVanOpdrachtgeverInfo">
 					<!-- Vacature details will be displayed here -->
 				</div>
 			</div>
@@ -50,32 +51,26 @@
 
 	<script>
 
-		function gotoVacature(id) {
-			getVacatureById(id)
-		}
-
-		function loadVacatures() {
-			fetch(`${backendPath}api/vacature`)
+		function loadMatches(id) {
+			fetch(`${backendPath}api/opdrachtgever/${id}/opdrachten`)
 				.then((res) => res.json())
 				.then((data) => {
+					console.log("data: ", data)
 					let html = ''
 
-					data.forEach((vacature) => {
-						// Show only the first 100 characters of the omschrijving on the main page
-						const summary =
-							vacature.omschrijving.length > 100
-								? vacature.omschrijving.substring(0, 100) + '...'
-								: vacature.omschrijving
-
+					data.forEach((match) => {
+						console.log(match.foto)
 						html += `
                         <div class="col-12 col-md-4 col-lg-3 mt-4">
                             <div class="card">
-                                <img src="https://webneel.com/daily/sites/default/files/images/daily/08-2018/1-nature-photography-spring-season-mumtazshamsee.jpg" class="card-img-top" alt="...">
+                                <img src="../img/${match.foto}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">${vacature.titel}</h5>
-                                    <p class="card-text">${summary}</p>
+                                    <h5 class="card-title"><strong>Vacature: </strong>${match.titel}</h5>
+                                    <p class="card-text"><strong>Trainee: </strong>${match.naam}</p>
+									<p class="card-text"><strong>Status: </strong>${match.status}</p>
+									<p class="card-text"><strong>Richting: </strong>${match.richting}</p>
                                     <div class="d-flex justify-content-between">
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#vacatureModal" onclick="gotoVacature(${vacature.id})">
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#matchModal" onclick="getOpdrachtVanOpdrachtgeverById(${opdrachtgeverId},${match.opdrachtId})">
                                             Informatie
                                         </button>
                                     </div>
@@ -85,19 +80,22 @@
                         `
 					})
 
-					document.getElementById('vacatures-row').innerHTML = html
+					document.getElementById('trainees-row').innerHTML = html
 				})
 		}
 
-		document.addEventListener('DOMContentLoaded', function (event) {
+		document.addEventListener('DOMContentLoaded', async function (event) {
 			let userID = localStorage.getItem('ID');
 			if (userID == null) {
-				traineeId = 9 // traineeId is afhankelijk van wie er ingelogd is
+				opdrachtgeverId = 1 // traineeId is afhankelijk van wie er ingelogd is
 			} else {
-				traineeId = userID
+				opdrachtgeverId = userID
 			}
-			loadVacatures()
-			document.getElementById('trainee-id').innerHTML = `Vacatures voor trainee: ${traineeId}`
+			opdrachtgeverId = 1 // overschrijven als tijdelijke oplossing
+			loadMatches(opdrachtgeverId)
+			opdrachtgever = await getOpdrachtgeverById(opdrachtgeverId)
+			document.getElementById('matchModalLabel').innerHTML = `Opdrachten van ${opdrachtgever.naam} met ID: ${opdrachtgeverId}`
+			document.getElementById('opdrachtgever_id_matches').innerHTML = `Opdrachten van ${opdrachtgever.naam} met ID: ${opdrachtgeverId}`
 		})
 	</script>
 

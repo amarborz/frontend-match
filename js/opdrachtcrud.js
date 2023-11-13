@@ -2,7 +2,7 @@ async function getOpdrachtById() {
 	var opdrachtId = document.getElementById('opdrachtId').value
 	try {
 		let response = await fetch(
-			`https://yc2310-match-backend.azurewebsites.net/api/opdracht/${opdrachtId}`
+			`${backendPath}api/opdracht/${opdrachtId}`
 		)
 		let opdracht = await response.json()
 		displayOpdrachtInfo(opdracht)
@@ -15,7 +15,7 @@ async function getOpdrachtById() {
 
 async function postOpdracht(opdracht) {
 	try {
-		await fetch(`https://yc2310-match-backend.azurewebsites.net/api/opdracht`, {
+		await fetch(`${backendPath}api/opdracht`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

@@ -1,7 +1,7 @@
 async function getTraineeById(traineeId) {
 	try {
 		let response = await fetch(
-			`https://yc2310-match-backend.azurewebsites.net/api/trainee/${traineeId}`
+			`${backendPath}api/trainee/${traineeId}`
 		)
 		let trainee = await response.json()
 		return trainee
@@ -10,10 +10,27 @@ async function getTraineeById(traineeId) {
 	}
 }
 
+async function getOpdrachtVanTraineeById(traineeId, opdrachtId) {
+	try {
+		let response = await fetch(
+			`${backendPath}api/trainee/${traineeId}/opdrachten`
+		)
+		let opdrachten = await response.json()
+		for (let opdracht of opdrachten) {
+			if (opdracht.opdrachtId == opdrachtId) {
+				console.log(opdracht)
+				displayOpdrachtVanTraineeInfo(opdracht)
+			}
+		}
+	} catch (error) {
+		console.error('Error fetching data:', error)
+	}
+}
+
 async function updateTrainee(traineeId, updatedData) {
 	try {
 		const response = await fetch(
-			`https://yc2310-match-backend.azurewebsites.net/api/trainee/${traineeId}`,
+			`${backendPath}api/trainee/${traineeId}`,
 			{
 				method: 'PUT',
 				headers: {
@@ -36,7 +53,7 @@ async function updateTrainee(traineeId, updatedData) {
 
 async function postTrainee(trainee) {
 	try {
-		await fetch(`https://yc2310-match-backend.azurewebsites.net/api/trainee`, {
+		await fetch(`${backendPath}api/trainee`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -67,6 +84,25 @@ function displayTraineeInfo(trainee) {
         </div>
         <div class="col-md-6">
             <img src="../img/${trainee.foto}" class="img-fluid">
+        </div>
+    </div>
+        `
+}
+
+function displayOpdrachtVanTraineeInfo(opdracht) {
+	let opdrachtVanTraineeInfoDiv = document.getElementById('opdrachtVanTraineeInfo')
+	opdrachtVanTraineeInfoDiv.innerHTML = `
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="text-primary">${opdracht.naam}</h3>
+			<p class="card-text"><strong>Titel:</strong> ${opdracht.titel}</p>
+			<p class="card-text"><strong>Uren:</strong> ${opdracht.uren}</p>
+            <p class="card-text"><strong>Duur:</strong> ${opdracht.duur}</p>
+            <p class="card-text"><strong>E-mail:</strong> ${opdracht.email}</p>
+            <p class="card-text"><strong>Telefoon:</strong> ${opdracht.telefoon}</p>
+        </div>
+        <div class="col-md-6">
+            <img src="../img/${opdracht.foto}" class="img-fluid">
         </div>
     </div>
         `

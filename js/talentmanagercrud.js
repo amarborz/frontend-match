@@ -2,7 +2,7 @@ async function getTalentmanagerById() {
 	var talentmanagerId = document.getElementById('talentmanagerId').value
 	try {
 		let response = await fetch(
-			`https://yc2310-match-backend.azurewebsites.net/api/talentmanager/${talentmanagerId}`
+			`${backendPath}api/talentmanager/${talentmanagerId}`
 		)
 		let talentmanager = await response.json()
 		displayTalentmanagerInfo(talentmanager)
@@ -15,7 +15,7 @@ async function getTalentmanagerById() {
 async function postTalentmanager(talentmanager) {
 	try {
 		await fetch(
-			`https://yc2310-match-backend.azurewebsites.net/api/talentmanager`,
+			`${backendPath}api/talentmanager`,
 			{
 				method: 'POST',
 				headers: {
