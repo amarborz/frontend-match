@@ -2,35 +2,49 @@ const backendPath = 'https://yc2310-match-backend.azurewebsites.net/'
 // const backendPath = 'http://localhost:8080/'
 
 const showProfile = (item) => {
-	console.log(item)
-	document.getElementById('dropdownMenu1').innerHTML = item.innerHTML
+  let rol = item.innerHTML
+  document.getElementById('dropdownMenu1').innerHTML = rol
+  
+  console.log("Dit is het profiel", rol)
+  if (rol == "Trainee") {
+    window.location.href = "homeTrainees.html"
+    console.log("go to: ", rol)
+  } else if (rol == "Talent Manager") {
+    window.location.href = "homeTalent.html"
+    console.log("go to: ", rol)
+  } else if (rol == "Opdrachtgever") {
+    window.location.href = "homeOpdracht.html"
+    console.log("go to: ", rol)
+  }
+  
 }
 
 const getProfile = () => {
-	const profile = document.getElementById('dropdownMenu1').innerHTML
-	console.log(profile)
-	localStorage.setItem('profile', profile)
+  const profile = document.getElementById('dropdownMenu1').innerHTML
+  console.log(profile)
+  localStorage.setItem('profile', profile)
 }
 
 const profile = localStorage.getItem('profile') || 'Opdrachtgever'
 console.log(profile)
 
 const loadNavBar = () => {
-	const navbarContainer = document.createElement('nav')
+  const navbarContainer = document.createElement('nav')
 
-	navbarContainer.classList.add(
-		'navbar',
-		'navbar-expand-lg',
-		'navbar-light',
-		'bg-primary',
-		'fixed-top'
-	)
+  navbarContainer.classList.add(
+    'navbar',
+    'navbar-expand-lg',
+    'navbar-light',
+    'bg-primary',
+    'fixed-top'
+  )
 
-	// Define the HTML code for the navigation bar
+  // Define the HTML code for the navigation bar
 
-	if (profile === 'Opdrachtgever') {
-		console.log('Opdrachtgever')
-		navbarContainer.innerHTML = `
+  let url = window.location.href
+  if (profile === 'Opdrachtgever') {
+    console.log('Opdrachtgever')
+    navbarContainer.innerHTML = `
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
       <a class="navbar-brand" href="homeOpdracht.html">
@@ -72,10 +86,10 @@ const loadNavBar = () => {
             <a class="nav-link text-white" href="homeOpdracht.html">Vacatures</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="homeOpdracht.html">Matches</a>
+            <a class="nav-link text-white" href="OpdrachtgeverMatches.html">Matches</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="homeOpdracht.html">Opdrachten</a>
+            <a class="nav-link text-white" href="OpdrachtgeverMatches.html">Opdrachten</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="loonstrook.html">Loonstroken</a>
@@ -93,9 +107,9 @@ const loadNavBar = () => {
       }
     </style>
     `
-	} else if (profile === 'Trainee') {
-		console.log('Trainee')
-		navbarContainer.innerHTML = `
+  } else if (profile === 'Trainee') {
+    console.log('Trainee')
+    navbarContainer.innerHTML = `
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
     <a class="navbar-brand" href="homeTrainees.html">
@@ -138,11 +152,10 @@ const loadNavBar = () => {
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="homeTrainees.html"
-            >Vacatures</a
-          >
+            >Vacatures</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="homeTrainees.html">Mijn Opdracht</a>
+          <a class="nav-link text-white" href="TraineeMatches.html">Mijn Opdrachten</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="loonstrook.html">Loonstroken</a>
@@ -160,9 +173,9 @@ const loadNavBar = () => {
     }
   </style>
   `
-	} else {
-		console.log('Talent')
-		navbarContainer.innerHTML = `
+  } else {
+    console.log('Talent')
+    navbarContainer.innerHTML = `
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
     <a class="navbar-brand" href="homeTalent.html">
@@ -208,8 +221,7 @@ const loadNavBar = () => {
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="homeTrainees.html"
-            >Matches</a
-          >
+            >Matches</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="berichten.html">Berichten</a>
@@ -224,8 +236,8 @@ const loadNavBar = () => {
     }
   </style>
   `
-	}
+  }
 
-	// Append the navigation bar to the document
-	document.body.insertBefore(navbarContainer, document.body.firstChild)
+  // Append the navigation bar to the document
+  document.body.insertBefore(navbarContainer, document.body.firstChild)
 }

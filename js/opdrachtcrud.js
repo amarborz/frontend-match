@@ -13,15 +13,27 @@ async function getOpdrachtById() {
 	}
 }
 
-async function postOpdracht(opdracht) {
+async function postOpdracht(opdracht, vacatureId, traineeId) {
 	try {
-		await fetch(`${backendPath}api/opdracht`, {
+		await fetch(`${backendPath}api/opdracht/${vacatureId}/${traineeId}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(opdracht),
 		})
+	} catch (error) {
+		console.error('Error fetching data:', error)
+	}
+}
+
+async function deleteOpdracht(opdrachtId) {
+	try {
+		const response = await fetch(`${backendPath}api/opdracht/${opdrachtId}`, {
+			method: 'DELETE',
+		})
+		console.log("Opdracht ", opdrachtId, " deleted")
+
 	} catch (error) {
 		console.error('Error fetching data:', error)
 	}

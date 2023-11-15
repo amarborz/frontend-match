@@ -101,10 +101,8 @@
 					let html = ''
 
 					// const cutData = data.slice(0, 4)
-					console.log(data)
 					data.forEach((vacature) => {
 						if (vacature.omschrijving === null) return
-						console.log(vacature)
 						// Show only the first 100 characters of the omschrijving on the main page
 						const summary =
 							vacature.omschrijving.length > 100
@@ -122,7 +120,7 @@
 			                                  <button class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#vacatureModal" onclick="gotoVacature(${vacature.id})">
 			                                      Informatie
 			                                  </button>
-			                                  <button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#vacatureModal" onclick="gotoVacature(${vacature.id})">
+			                                  <button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#vacatureModal" onclick="window.location.href='matchen.html#' + ${vacature.id}">
 			                                      Matchen
 			                                  </button>
 			                                  <a class="btn btn-warning m-2 text-white" href=editVacature.html#${vacature.id}>

@@ -99,21 +99,27 @@
 			               </p>
 			               <div class="row buttons-row d-flex justify-content-evenly">
 			                 <div class="col-5 text-start">
-			                   <button id='match-${trainee.id}' class="btn btn-primary" style="font-size:12px; height:50px;" onclick="handleMatch(${trainee.id})">
+			                   <button id='match-${trainee.id}' class="btn btn-primary" style="font-size:12px; height:50px;" onclick="">
 			                     Bericht
 			                   </button>
 			                 </div>
 			                 <div class="col-5 text-start">
-			                   <button id='match-${trainee.id}' class="btn btn-secondary" style="font-size:12px; height:50px;" onclick="handleMatch(${trainee.id})">
+			                   <button id='match-${trainee.id}' class="btn btn-secondary" style="font-size:12px; height:50px;" onclick="">
 			                     Niet Beschikbaar
 			                   </button>
 			                 </div>
 			                 
-			                 <div class=" d-flex justify-content-evenly col-10 mt-2">
-			                   <button class="btn btn-danger" style="font-size:12px; height:50px;" data-bs-toggle="modal" data-bs-target="#traineeModal" onclick="getDisplayTrainee(${trainee.id})"">
+			                 <div class="col-5 text-start">
+			                   <button class="btn btn-danger" style="font-size:12px; height:50px;" data-bs-toggle="modal" data-bs-target="#traineeModal" onclick="getDisplayTrainee(${trainee.id})">
 			                     Meer Info
 			                   </button>
 			                 </div>
+							 <div class="col-5 text-start">
+								<button class="btn btn-danger" style="font-size:12px; height:50px;" onclick="window.location.href='TraineeMatches.html'">
+								  Matches
+								</button>
+							  </div>
+
 			               </div>
 			             </div>
 			           </div>

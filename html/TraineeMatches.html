@@ -95,7 +95,7 @@
 			} else {
 				traineeId = userID
 			}
-			traineeId = 9 // overschrijven als tijdelijke oplossing 
+			traineeId = 8 // overschrijven als tijdelijke oplossing 
 			loadOpdrachtenVanTrainee(traineeId)
 			trainee = await getTraineeById(traineeId)
 			document.getElementById('vacatureModalLabel').innerHTML = `Opdrachten van ${trainee.naam} met ID: ${traineeId}`
