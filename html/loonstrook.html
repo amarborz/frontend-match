@@ -22,7 +22,7 @@
 
 	<body class="bg-light">
 		<script>
-			loadNavBar()
+			loadNavBar();
 		</script>
 
 		<!-- Overzicht loonstroken -->
@@ -65,14 +65,14 @@
 
 		<script>
 			function gotoLoonstrook(id) {
-				getLoonstrookById(id)
+				getLoonstrookById(id);
 			}
 
 			function loadLoonstroken() {
 				fetch(`${backendPath}api/loonstrook`)
 					.then((res) => res.json())
 					.then((data) => {
-						let html = ''
+						let html = "";
 
 						data.forEach((loonstrook) => {
 							html += `
@@ -90,20 +90,16 @@
                                 </div>
                             </div>
                         </div>
-                        `
-						})
+                        `;
+						});
 
-						document.getElementById('loonstroken-row').innerHTML = html
-					})
+						document.getElementById("loonstroken-row").innerHTML = html;
+					});
 			}
 
-			document.addEventListener('DOMContentLoaded', function (event) {
-				loadLoonstroken()
-			})
-		</script>
-
-		<script>
-			loadFooter()
+			document.addEventListener("DOMContentLoaded", function (event) {
+				loadLoonstroken();
+			});
 		</script>
 	</body>
 </html>

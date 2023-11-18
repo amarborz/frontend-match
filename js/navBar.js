@@ -1,50 +1,28 @@
+
 const backendPath = 'https://yc2310-match-backend.azurewebsites.net/'
 // const backendPath = 'http://localhost:8080/'
 
-const showProfile = (item) => {
-  let rol = item.innerHTML
-  document.getElementById('dropdownMenu1').innerHTML = rol
-  
-  console.log("Dit is het profiel", rol)
-  if (rol == "Trainee") {
-    window.location.href = "homeTrainees.html"
-    console.log("go to: ", rol)
-  } else if (rol == "Talent Manager") {
-    window.location.href = "homeTalent.html"
-    console.log("go to: ", rol)
-  } else if (rol == "Opdrachtgever") {
-    window.location.href = "homeOpdracht.html"
-    console.log("go to: ", rol)
-  }
-  
-}
 
-const getProfile = () => {
-  const profile = document.getElementById('dropdownMenu1').innerHTML
-  console.log(profile)
-  localStorage.setItem('profile', profile)
-}
-
-const profile = localStorage.getItem('profile') || 'Opdrachtgever'
-console.log(profile)
+const profile = localStorage.getItem("role");
 
 const loadNavBar = () => {
-  const navbarContainer = document.createElement('nav')
+	const navbarContainer = document.createElement("nav");
 
-  navbarContainer.classList.add(
-    'navbar',
-    'navbar-expand-lg',
-    'navbar-light',
-    'bg-primary',
-    'fixed-top'
-  )
+	navbarContainer.classList.add(
+		"navbar",
+		"navbar-expand-lg",
+		"navbar-light",
+		"bg-primary",
+		"fixed-top"
+	);
 
-  // Define the HTML code for the navigation bar
+	// Define the HTML code for the navigation bar
 
-  let url = window.location.href
-  if (profile === 'Opdrachtgever') {
-    console.log('Opdrachtgever')
-    navbarContainer.innerHTML = `
+	let url = window.location.href;
+	console.log("profiel: ", profile);
+	if (profile === "ROLE_OPDRACHTGEVER") {
+		console.log("Opdrachtgever");
+		navbarContainer.innerHTML = `
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
       <a class="navbar-brand" href="homeOpdracht.html">
@@ -56,16 +34,6 @@ const loadNavBar = () => {
           alt="Your Logo"
         />
       </a>
-      <div class="dropdown mx-3">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ${profile}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <button class="dropdown-item" type="button" onclick="showProfile(this); getProfile()">Opdrachtgever</button>
-          <button class="dropdown-item" type="button" onclick="showProfile(this); getProfile()">Talent Manager</button>
-          <button class="dropdown-item" type="button" onclick="showProfile(this); getProfile()">Trainee</button>
-        </div>
-      </div>
       <button
         class="navbar-toggler"
         type="button"
@@ -92,7 +60,7 @@ const loadNavBar = () => {
             <a class="nav-link text-white" href="OpdrachtgeverMatches.html">Opdrachten</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="loonstrook.html">Loonstroken</a>
+            <a class="nav-link text-white" href="https://dataproject.azurewebsites.net/" target="_blank">Statistieken</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="berichten.html">Berichten</a>
@@ -106,10 +74,11 @@ const loadNavBar = () => {
         background-color: #6d6d6d; /* Change the background color on hover */
       }
     </style>
-    `
-  } else if (profile === 'Trainee') {
-    console.log('Trainee')
-    navbarContainer.innerHTML = `
+
+    `;
+	} else if (profile === "ROLE_TRAINEE") {
+		console.log("Trainee");
+		navbarContainer.innerHTML = `
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
     <a class="navbar-brand" href="homeTrainees.html">
@@ -121,16 +90,6 @@ const loadNavBar = () => {
         alt="Your Logo"
       />
     </a>
-    <div class="dropdown mx-3">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        ${profile}
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <button class="dropdown-item" type="button" onclick="showProfile(this); getProfile()">Opdrachtgever</button>
-        <button class="dropdown-item" type="button" onclick="showProfile(this); getProfile()">Talent Manager</button>
-        <button class="dropdown-item" type="button" onclick="showProfile(this); getProfile()">Trainee</button>
-      </div>
-    </div>
     <button
       class="navbar-toggler"
       type="button"
@@ -172,10 +131,10 @@ const loadNavBar = () => {
       background-color: #6d6d6d; /* Change the background color on hover */
     }
   </style>
-  `
-  } else {
-    console.log('Talent')
-    navbarContainer.innerHTML = `
+  `;
+	} else if (profile === "ROLE_TALENTMANAGER") {
+		console.log("Talent");
+		navbarContainer.innerHTML = `
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
     <a class="navbar-brand" href="homeTalent.html">
@@ -187,16 +146,6 @@ const loadNavBar = () => {
         alt="Your Logo"
       />
     </a>
-    <div class="dropdown mx-3">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        ${profile}
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <button class="dropdown-item" type="button" onclick="showProfile(this); getProfile()">Opdrachtgever</button>
-        <button class="dropdown-item" type="button" onclick="showProfile(this); getProfile()">Talent Manager</button>
-        <button class="dropdown-item" type="button" onclick="showProfile(this); getProfile()">Trainee</button>
-      </div>
-    </div>
     <button
       class="navbar-toggler"
       type="button"
@@ -235,9 +184,9 @@ const loadNavBar = () => {
       background-color: #6d6d6d; /* Change the background color on hover */
     }
   </style>
-  `
-  }
+  `;
+	}
 
-  // Append the navigation bar to the document
-  document.body.insertBefore(navbarContainer, document.body.firstChild)
-}
+	// Append the navigation bar to the document
+	document.body.insertBefore(navbarContainer, document.body.firstChild);
+};

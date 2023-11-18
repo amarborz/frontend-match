@@ -1,8 +1,6 @@
 async function getTraineeById(traineeId) {
 	try {
-		let response = await fetch(
-			`${backendPath}api/trainee/${traineeId}`
-		)
+		let response = await fetch(`${backendPath}api/trainee/${traineeId}`)
 		let trainee = await response.json()
 		return trainee
 	} catch (error) {
@@ -29,16 +27,13 @@ async function getOpdrachtVanTraineeById(traineeId, opdrachtId) {
 
 async function updateTrainee(traineeId, updatedData) {
 	try {
-		const response = await fetch(
-			`${backendPath}api/trainee/${traineeId}`,
-			{
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(updatedData),
-			}
-		)
+		const response = await fetch(`${backendPath}api/trainee/${traineeId}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(updatedData),
+		})
 
 		if (response.ok) {
 			const updatedTrainee = await response.json()
@@ -90,7 +85,9 @@ function displayTraineeInfo(trainee) {
 }
 
 function displayOpdrachtVanTraineeInfo(opdracht) {
-	let opdrachtVanTraineeInfoDiv = document.getElementById('opdrachtVanTraineeInfo')
+	let opdrachtVanTraineeInfoDiv = document.getElementById(
+		'opdrachtVanTraineeInfo'
+	)
 	opdrachtVanTraineeInfoDiv.innerHTML = `
     <div class="row">
         <div class="col-md-6">

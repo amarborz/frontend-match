@@ -1,214 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>** Sign Up **</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="../js/traineecrud.js"></script>
-    <script src="../js/talentmanagercrud.js"></script>
-    <script src="../js/opdrachtgevercrud.js"></script>
-    <script src="../js/signUpcrud.js"></script>
-  </head>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>** Sign Up **</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+			crossorigin="anonymous"
+		></script>
+		<script src="../js/navBar.js"></script>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script src="../js/traineecrud.js"></script>
+		<script src="../js/talentmanagercrud.js"></script>
+		<script src="../js/opdrachtgevercrud.js"></script>
+		<script src="../js/signUpcrud.js"></script>
+	</head>
 
-  <body>
-    <!-- Page content -->
-    <main>
-      <section class="container d-flex flex-column">
-        <div
-          class="row align-items-center justify-content-center g-0 min-vh-100"
-        >
-          <div class="col-lg-5 col-md-8 py-8 py-xl-0">
-            <!-- Card -->
-            <div class="card shadow">
-              <!-- Card body -->
-              <div class="card-body p-6">
-                <div class="mb-4">
-                  <a href="../index.html">
-                    <img
-                      src="../icons/recruitment.svg"
-                      alt="Recruitment Icon"
-                      width="100"
-                      height="100"
-                    />
-                  </a>
-                  <h1 class="mb-1 fw-bold">Sign up</h1>
-                  <span
-                    >Already have an account?
-                    <a href="login.html" class="ms-1">Sign in</a></span
-                  >
-                </div>
-                <!-- Form -->
-                <form id="signupForm" method="post">
-                  <!-- Alert on successful sign up -->
-                  <div
-                    class="alert alert-success alert-dismissible fade show"
-                    role="alert"
-                    style="display: none"
-                  >
-                    Sign up successful!
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="alert"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <!-- Email -->
-                  <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      class="form-control"
-                      name="email"
-                      placeholder="Email address here"
-                      required=""
-                    />
-                  </div>
-                  <!-- Password -->
-                  <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input
-                      type="password"
-                      id="password"
-                      class="form-control"
-                      name="password"
-                      placeholder="**************"
-                      required=""
-                      autocomplete="off"
-                    />
-                  </div>
-                  <!-- Voornaam (First Name) -->
-                  <div class="mb-3">
-                    <label for="voornaam" class="form-label">Voornaam</label>
-                    <input
-                      type="text"
-                      id="voornaam"
-                      class="form-control"
-                      name="voornaam"
-                      placeholder="Your First Name"
-                      required=""
-                    />
-                  </div>
-                  <!-- Achternaam (Last Name) -->
-                  <div class="mb-3">
-                    <label for="achternaam" class="form-label"
-                      >Achternaam</label
-                    >
-                    <input
-                      type="text"
-                      id="achternaam"
-                      class="form-control"
-                      name="achternaam"
-                      placeholder="Your Last Name"
-                      required=""
-                    />
-                  </div>
-                  <!-- Telefoonnummer (Phone Number) -->
-                  <div class="mb-3">
-                    <label for="telefoonnummer" class="form-label"
-                      >Telefoonnummer</label
-                    >
-                    <input
-                      type="tel"
-                      id="telefoonnummer"
-                      class="form-control"
-                      name="telefoonnummer"
-                      placeholder="Your Phone Number"
-                      required=""
-                    />
-                  </div>
-                  <!-- Persoon (Person Dropdown) -->
-                  <div class="mb-3">
-                    <label for="persoon" class="form-label">Persoon</label>
-                    <div class="dropdown">
-                      <button
-                        class="btn btn-secondary dropdown-toggle"
-                        type="button"
-                        id="persoonDropdown"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        Select Persoon
-                      </button>
-                      <ul
-                        class="dropdown-menu"
-                        aria-labelledby="persoonDropdown"
-                      >
-                        <li>
-                          <a class="dropdown-item" href="#" data-value="Trainee"
-                            >Trainee</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            class="dropdown-item"
-                            href="#"
-                            data-value="Talent Manager"
-                            >Talent Manager</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            class="dropdown-item"
-                            href="#"
-                            data-value="Opdrachtgever"
-                            >Opdrachtgever</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div>
-                    <!-- Button -->
-                    <div class="d-grid">
-                      <button type="submit" class="btn btn-primary">
-                        Create Free Account
-                      </button>
-                    </div>
-                  </div>
-                  <hr class="my-4" />
-                  <div class="mt-4 text-center"></div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+	<body>
+		<!-- Page content -->
+		<main>
+			<section class="container d-flex flex-column">
+				<div
+					class="row align-items-center justify-content-center g-0 min-vh-100"
+				>
+					<div class="col-lg-5 col-md-8 py-8 py-xl-0">
+						<!-- Card -->
+						<div class="card shadow">
+							<!-- Card body -->
+							<div class="card-body p-6">
+								<div class="mb-4">
+									<a href="../index.html">
+										<img
+											src="../icons/recruitment.svg"
+											alt="Recruitment Icon"
+											width="100"
+											height="100"
+										/>
+									</a>
+									<h1 class="mb-1 fw-bold">Sign up</h1>
+									<span
+										>Already have an account?
+										<a href="login.html" class="ms-1">Sign in</a></span
+									>
+								</div>
+								<!-- Form -->
+								<form id="signupForm" method="post">
+									<!-- Alert on successful sign up -->
+									<div
+										class="alert alert-success alert-dismissible fade show"
+										role="alert"
+										style="display: none"
+									>
+										Sign up successful!
+										<button
+											type="button"
+											class="btn-close"
+											data-bs-dismiss="alert"
+											aria-label="Close"
+										></button>
+									</div>
+									<!-- Email -->
+									<div class="mb-3">
+										<label for="email" class="form-label">Email</label>
+										<input
+											type="email"
+											id="email"
+											class="form-control"
+											name="email"
+											placeholder="Email address here"
+											required=""
+										/>
+									</div>
+									<!-- Password -->
+									<div class="mb-3">
+										<label for="password" class="form-label">Password</label>
+										<input
+											type="password"
+											id="password"
+											class="form-control"
+											name="password"
+											placeholder="**************"
+											required=""
+											autocomplete="off"
+										/>
+									</div>
+									<!-- Voornaam (First Name) -->
+									<div class="mb-3">
+										<label for="voornaam" class="form-label">Voornaam</label>
+										<input
+											type="text"
+											id="voornaam"
+											class="form-control"
+											name="voornaam"
+											placeholder="Your First Name"
+											required=""
+										/>
+									</div>
+									<!-- Achternaam (Last Name) -->
+									<div class="mb-3">
+										<label for="achternaam" class="form-label"
+											>Achternaam</label
+										>
+										<input
+											type="text"
+											id="achternaam"
+											class="form-control"
+											name="achternaam"
+											placeholder="Your Last Name"
+											required=""
+										/>
+									</div>
+									<!-- Telefoonnummer (Phone Number) -->
+									<div class="mb-3">
+										<label for="telefoonnummer" class="form-label"
+											>Telefoonnummer</label
+										>
+										<input
+											type="tel"
+											id="telefoonnummer"
+											class="form-control"
+											name="telefoonnummer"
+											placeholder="Your Phone Number"
+											required=""
+										/>
+									</div>
+									<!-- Persoon (Person Dropdown) -->
+									<div class="mb-3">
+										<label for="persoon" class="form-label">Persoon</label>
+										<div class="dropdown">
+											<button
+												class="btn btn-secondary dropdown-toggle"
+												type="button"
+												id="persoonDropdown"
+												data-bs-toggle="dropdown"
+												aria-expanded="false"
+											>
+												Select Persoon
+											</button>
+											<ul
+												class="dropdown-menu"
+												aria-labelledby="persoonDropdown"
+											>
+												<li>
+													<a class="dropdown-item" href="#" data-value="Trainee"
+														>Trainee</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														href="#"
+														data-value="Talent Manager"
+														>Talent Manager</a
+													>
+												</li>
+												<li>
+													<a
+														class="dropdown-item"
+														href="#"
+														data-value="Opdrachtgever"
+														>Opdrachtgever</a
+													>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div>
+										<!-- Button -->
+										<div class="d-grid">
+											<button type="submit" class="btn btn-primary">
+												Create Free Account
+											</button>
+										</div>
+									</div>
+									<hr class="my-4" />
+									<div class="mt-4 text-center"></div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
 
-    <!-- JavaScript -->
-    <script>
-      // Save Persoon (talent manager, trainee, opdrachtgever)
-      $(document).ready(function () {
-        // Handle dropdown item click
-        $(".dropdown-item").click(function () {
-          var selectedValue = $(this).data("value");
-          $("#persoonDropdown").text(selectedValue);
-        });
-      });
+		<!-- JavaScript -->
+		<script>
+			// Save Persoon (talent manager, trainee, opdrachtgever)
+			$(document).ready(function () {
+				// Handle dropdown item click
+				$(".dropdown-item").click(function () {
+					var selectedValue = $(this).data("value");
+					$("#persoonDropdown").text(selectedValue);
+				});
+			});
 
-      // Prevent page from scrolling to top
-      $(document).ready(function () {
-        // Handle dropdown item click
-        $(".dropdown-item").click(function (e) {
-          e.preventDefault(); // Prevent the default behavior
-          var selectedValue = $(this).data("value");
-          $("#persoonDropdown").text(selectedValue);
-        });
-      });
-    </script>
-  </body>
+			// Prevent page from scrolling to top
+			$(document).ready(function () {
+				// Handle dropdown item click
+				$(".dropdown-item").click(function (e) {
+					e.preventDefault(); // Prevent the default behavior
+					var selectedValue = $(this).data("value");
+					$("#persoonDropdown").text(selectedValue);
+				});
+			});
+		</script>
+	</body>
 </html>

@@ -77,7 +77,8 @@
 		</div>
 
 		<script>
-			let opdrachtgeverId = 2
+			let opdrachtgeverId = localStorage.getItem('id')
+			console.log('OpdrachtgeverId', opdrachtgeverId)
 			let url = window.location.href
 			let vacatureId = url.slice(url.indexOf('#') + 1, url.length)
 			function makeVacatureCard() {
@@ -90,12 +91,10 @@
 				fetch(`${backendPath}api/trainee`)
 					.then((res) => res.json())
 					.then((data) => {
-						console.log('lol', traineeIds)
 						let html = ''
 
 						data.forEach((trainee) => {
 							console.log('traineeIds: ', traineeIds)
-							//traineeIds = [1,2,8]
 							if (traineeIds.includes(trainee.id)) {
 								buttonClassMatch = 'btn btn-primary'
 								buttonClassNoMatch = 'btn btn-secondary'
@@ -113,7 +112,7 @@
 							html += `
 			         <div class="col-12 col-md-4 col-lg-4 px-4 mt-5">
 			           <div class="card">
-			             <img src="../img/${trainee.foto}" class="card-img-top" alt="...">
+			             <img src="${trainee.foto}" class="card-img-top" alt="...">
 			             <div class="card-body">
 			               <p class="text-primary text-medium card-title fs-5">${trainee.naam}</p>
 			               <p style="height: 30px;" class="text-wrap overflow-auto card-text text-break fs-6"><strong>Richting:</strong> ${trainee.richting}</p>
