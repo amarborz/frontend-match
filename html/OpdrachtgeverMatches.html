@@ -78,7 +78,7 @@
 							html += `
                         <div class="col-12 col-md-4 col-lg-3 mt-4">
                             <div class="card">
-                                <img src="../img/${match.foto}" class="card-img-top" alt="...">
+                                <img src="${match.foto}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title"><strong>Vacature: </strong>${match.titel}</h5>
                                     <p class="card-text"><strong>Trainee: </strong>${match.naam}</p>
@@ -105,10 +105,10 @@
 				opdrachtgever = await getOpdrachtgeverById(opdrachtgeverId)
 				document.getElementById(
 					'matchModalLabel'
-				).innerHTML = `Opdrachten van ${opdrachtgever.naam} met ID: ${opdrachtgeverId}`
+				).innerHTML = `Matches van ${opdrachtgever.naam}`
 				document.getElementById(
 					'opdrachtgever_id_matches'
-				).innerHTML = `Opdrachten van ${opdrachtgever.naam} met ID: ${opdrachtgeverId}`
+				).innerHTML = `Matches van ${opdrachtgever.naam}`
 			})
 		</script>
 

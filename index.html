@@ -41,25 +41,7 @@
     <!-- 4. Uitloggen -->
 
     <script>
-      // TODO: Simulate user login status (replace this with actual logic)
-      const isLoggedIn = true; // Change this to false to simulate logged-out state
-      let userType = "trainee"
-      // Check the login status and load the appropriate content
-      if (isLoggedIn) {
-        if (userType == "trainee") {
-          window.location.href = '../html/homeTrainees.html';
-        } else if (userType = "talentmanager") {
-          window.location.href = '../html/homeTalentmanager.html';
-        } else if (userType = "opdrachtgever") {
-          window.location.href = '../html/homeOpdrachtgever.html';
-        }
-
-        // If the user is logged in, load the dashboard.html
-        //window.location.href = '../html/dashboard.html';
-      } else {
-        // If the user is not logged in, load the login.html
-        window.location.href = '../html/login.html';
-      }
+        window.location.href = '../html/login.html'; 
     </script>
   </body>
 </html>
