@@ -78,7 +78,7 @@ function displayTraineeInfo(trainee) {
             <p class="card-text"><strong>Bio:</strong> ${trainee.bio}</p>
         </div>
         <div class="col-md-6">
-            <img src="../img/${trainee.foto}" class="img-fluid">
+            <img src="${trainee.foto}" class="img-fluid">
         </div>
     </div>
         `
@@ -99,7 +99,7 @@ function displayOpdrachtVanTraineeInfo(opdracht) {
             <p class="card-text"><strong>Telefoon:</strong> ${opdracht.telefoon}</p>
         </div>
         <div class="col-md-6">
-            <img src="../img/${opdracht.foto}" class="img-fluid">
+            <img src="${opdracht.foto}" class="img-fluid">
         </div>
     </div>
         `

@@ -23,8 +23,8 @@
 
 	<body class="bg-light">
 		<script>
-			let traineeId;
-			loadNavBar();
+			let traineeId
+			loadNavBar()
 		</script>
 		<!-- Overzicht vacatures -->
 		<div class="container my-5">
@@ -66,61 +66,117 @@
 
 		<script>
 			function gotoVacature(id) {
-				getVacatureById(id);
+				getVacatureById(id)
 			}
 
 			function loadVacatures() {
-				let traineeId = localStorage.getItem("id")
+				let traineeId = localStorage.getItem('id')
 				fetch(`${backendPath}api/vacature`)
 					.then((res) => res.json())
 					.then((data) => {
-						let html = "";
+						let html = ''
 
 						data.forEach((vacature) => {
 							// Show only the first 100 characters of the omschrijving on the main page
 							const summary =
 								vacature.omschrijving.length > 100
-									? vacature.omschrijving.substring(0, 100) + "..."
-									: vacature.omschrijving;
+									? vacature.omschrijving.substring(0, 100) + '...'
+									: vacature.omschrijving
 
 							html += `
                         <div class="col-12 col-md-4 col-lg-3 mt-4">
                             <div class="card">
-                                <img src="https://webneel.com/daily/sites/default/files/images/daily/08-2018/1-nature-photography-spring-season-mumtazshamsee.jpg" class="card-img-top" alt="...">
+                                <img src="${
+																	vacature.titel
+																		.toLowerCase()
+																		.includes('java') &&
+																	vacature.titel
+																		.toLowerCase()
+																		.includes('junior')
+																		? '../img/java.jpg'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('java')
+																		? '../img/java2.png'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('devops') &&
+																		  vacature.titel
+																				.toLowerCase()
+																				.includes('junior')
+																		? '../img/devops.png'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('devops')
+																		? '../img/devops2.jpg'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('data') &&
+																		  vacature.titel
+																				.toLowerCase()
+																				.includes('junior')
+																		? '../img/data.jpg'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('data')
+																		? '../img/data2.jpg'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('business') &&
+																		  vacature.titel
+																				.toLowerCase()
+																				.includes('junior')
+																		? '../img/def2.jpg'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('business')
+																		? '../img/business2.png'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('power')
+																		? '../img/power2.png'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('outsystems')
+																		? '../img/low.png'
+																		: '../img/def.png'
+																}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">${vacature.titel}</h5>
+                                    <h5 class="card-title">${
+																			vacature.titel
+																		}</h5>
                                     <p class="card-text">${summary}</p>
                                     <div class="d-flex justify-content-between">
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#vacatureModal" onclick="gotoVacature(${vacature.id})">
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#vacatureModal" onclick="gotoVacature(${
+																					vacature.id
+																				})">
                                             Informatie
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        `;
-						});
+                        `
+						})
 
-						document.getElementById("vacatures-row").innerHTML = html;
-					});
+						document.getElementById('vacatures-row').innerHTML = html
+					})
 			}
 
-			document.addEventListener("DOMContentLoaded", function (event) {
-				let userID = localStorage.getItem("ID");
+			document.addEventListener('DOMContentLoaded', function (event) {
+				let userID = localStorage.getItem('id')
 				if (userID == null) {
-					traineeId = 9; // traineeId is afhankelijk van wie er ingelogd is
+					traineeId = 9 // traineeId is afhankelijk van wie er ingelogd is
 				} else {
-					traineeId = userID;
+					traineeId = userID
 				}
-				loadVacatures();
-				document.getElementById(
-					"trainee-id"
-				).innerHTML = `Vacatures voor trainee: ${traineeId}`;
-			});
+				loadVacatures()
+				document.getElementById('trainee-id').innerHTML = `Vacatures`
+			})
 		</script>
 
 		<script>
-			loadFooter();
+			loadFooter()
 		</script>
 	</body>
 </html>

@@ -82,14 +82,74 @@
 							html += `
                         <div class="col-12 col-md-4 col-lg-3 mt-4">
                             <div class="card">
-                                <img src="https://webneel.com/daily/sites/default/files/images/daily/08-2018/1-nature-photography-spring-season-mumtazshamsee.jpg" class="card-img-top" alt="...">
+                                <img src="${
+																	vacature.titel
+																		.toLowerCase()
+																		.includes('java') &&
+																	vacature.titel
+																		.toLowerCase()
+																		.includes('junior')
+																		? '../img/java.jpg'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('java')
+																		? '../img/java2.png'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('devops') &&
+																		  vacature.titel
+																				.toLowerCase()
+																				.includes('junior')
+																		? '../img/devops.png'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('devops')
+																		? '../img/devops2.jpg'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('data') &&
+																		  vacature.titel
+																				.toLowerCase()
+																				.includes('junior')
+																		? '../img/data.jpg'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('data')
+																		? '../img/data2.jpg'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('business') &&
+																		  vacature.titel
+																				.toLowerCase()
+																				.includes('junior')
+																		? '../img/def2.jpg'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('business')
+																		? '../img/business2.png'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('power')
+																		? '../img/power2.png'
+																		: vacature.titel
+																				.toLowerCase()
+																				.includes('outsystems')
+																		? '../img/low.png'
+																		: '../img/def.png'
+																}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">${vacature.titel}</h5>
-                                    <p class="card-text"><strong>Bedrijf: </strong>${vacature.naam}</p>
+                                    <h5 class="card-title">${
+																			vacature.titel
+																		}</h5>
+                                    <p class="card-text"><strong>Bedrijf: </strong>${
+																			vacature.naam
+																		}</p>
 									<p class="card-text"><strong>Status: </strong>${vacature.status}</p>
 									<p class="card-text">${summary}</p>
                                     <div class="d-flex justify-content-between">
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#vacatureModal" onclick="getOpdrachtVanTraineeById(${traineeId},${vacature.opdrachtId})">
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#vacatureModal" onclick="getOpdrachtVanTraineeById(${traineeId},${
+								vacature.opdrachtId
+							})">
                                             Informatie
                                         </button>
                                     </div>
@@ -104,13 +164,13 @@
 			}
 
 			document.addEventListener('DOMContentLoaded', async function (event) {
-				let userID = localStorage.getItem('ID')
+				let userID = localStorage.getItem('id')
 				if (userID == null) {
 					traineeId = 9 // traineeId is afhankelijk van wie er ingelogd is
 				} else {
 					traineeId = userID
 				}
-				traineeId = 8 // overschrijven als tijdelijke oplossing
+				// traineeId = 8 // overschrijven als tijdelijke oplossing
 				loadOpdrachtenVanTrainee(traineeId)
 				trainee = await getTraineeById(traineeId)
 				document.getElementById(
