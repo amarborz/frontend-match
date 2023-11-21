@@ -4,7 +4,7 @@ $(document).ready(function () {
 		e.preventDefault(); // Prevent the default form submission
 
 		// Check the selected value from the dropdown
-		var selectedValue = $("#persoonDropdown").text();
+		var selectedValue = $("#persoon").val(); // Updated to use the select element
 
 		// Get the form data
 		var formData = {
@@ -23,15 +23,17 @@ $(document).ready(function () {
 		};
 
 		// Call the appropriate function based on the selected "Persoon"
-		if (selectedValue === "Trainee") {
+		if (selectedValue == "Trainee") {
+			console.log("MAKING TRAINEE ACOUNT");
+			console.log(formData);
 			postTrainee(personData);
-		} else if (selectedValue === "Talent Manager") {
+		} else if (selectedValue == "Talent Manager") {
 			postTalentmanager(personData);
-		} else if (selectedValue === "Opdrachtgever") {
+		} else if (selectedValue == "Opdrachtgever") {
 			postOpdrachtgever(personData);
 		}
 
-		// Show the Bootstrap alert on succesful sign up
+		// Show the Bootstrap alert on successful sign up
 		$(".alert").fadeIn();
 
 		// Redirect to the dashboard.html page after a delay
