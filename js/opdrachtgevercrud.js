@@ -80,6 +80,30 @@ function displayOpdrachtgeverNotFound() {
 	opdrachtgeverInfoDiv.innerHTML = '<p>Opdrachtgever not found.</p>'
 }
 
+async function updateOpdrachtgever(opdrachtgeverId, updatedData) {
+	try {
+		const response = await fetch(
+			`${backendPath}api/opdrachtgever/${opdrachtgeverId}`,
+			{
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(updatedData),
+			}
+		)
+
+		if (response.ok) {
+			const updatedTrainee = await response.json()
+		} else {
+			// Handle errors or display a message if needed
+			console.error('Error updating trainee data:', response.status)
+		}
+	} catch (error) {
+		console.error('Error updating trainee data:', error)
+	}
+}
+
 function dummyOpdrachtgever() {
 	let opdrachtgever = {
 		// placeholder data

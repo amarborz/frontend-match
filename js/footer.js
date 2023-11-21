@@ -8,8 +8,8 @@ function loadFooter() {
 		<footer class="footer text-center bg-dark text-white py-4 mt-5">
 			<p>&copy; 2023 Match</p>
 			<p>
-				<a href="privacy.html" class="text-white">Privacy Policy</a> |
-				<a href="terms.html" class="text-white">Terms of Service</a>
+				<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" class="text-white">Privacy Policy</a> |
+				<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" class="text-white">Terms of Service</a>
 			</p>
 		</footer>
     `
