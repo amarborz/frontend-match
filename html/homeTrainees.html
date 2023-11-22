@@ -85,7 +85,7 @@
 
 							html += `
                         <div class="col-12 col-md-4 col-lg-3 mt-4">
-                            <div class="card">
+                            <div class="card" style="height:400px;">
                                 <img src="${
 																	vacature.titel
 																		.toLowerCase()
@@ -147,11 +147,12 @@
 																		}</h5>
                                     <p class="card-text">${summary}</p>
                                     <div class="d-flex justify-content-between">
+                                    <span class="align-bottom">
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#vacatureModal" onclick="gotoVacature(${
 																					vacature.id
 																				})">
                                             Informatie
-                                        </button>
+                                        </button></span>
                                     </div>
                                 </div>
                             </div>
