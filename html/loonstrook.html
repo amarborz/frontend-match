@@ -15,6 +15,7 @@
 			integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 			crossorigin="anonymous"
 		></script>
+		<script src="../js/traineecrud.js"></script>
 		<script src="../js/loonstrookcrud.js"></script>
 		<script src="../js/navBar.js"></script>
 		<script src="../js/footer.js"></script>
@@ -64,37 +65,43 @@
 		</div>
 
 		<script>
+			let traineeId = localStorage.getItem("id");
+
 			function gotoLoonstrook(id) {
 				getLoonstrookById(id);
 			}
 
 			function loadLoonstroken() {
-				fetch(`${backendPath}api/loonstrook`)
-					.then((res) => res.json())
-					.then((data) => {
-						let html = "";
+				getTraineeById(traineeId).then((data) => {
+					let html = "";
 
-						data.forEach((loonstrook) => {
-							html += `
-                        <div class="col-12 col-md-4 col-lg-3 mt-4">
-                            <div class="card">
-                                <img src="https://webneel.com/daily/sites/default/files/images/daily/08-2018/1-nature-photography-spring-season-mumtazshamsee.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">${loonstrook.periode}</h5>
-                                    <p class="card-text">€${loonstrook.salarisBedrag}</p>
-                                    <div class="d-flex justify-content-between">
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loonstrookModal" onclick="gotoLoonstrook(${loonstrook.id})">
-                                            Informatie
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+					if (data.loonstroken.length == 0) {
+						html += `
+						<h2 class="text-center mt-5">Geen loonstroken om te vertonen.</h2>
                         `;
-						});
+					}
 
-						document.getElementById("loonstroken-row").innerHTML = html;
+					data.loonstroken.forEach((loonstrook) => {
+						html += `
+					    <div class="col-12 col-md-4 col-lg-3 mt-4">
+					        <div class="card">
+					            <img src="https://cdn.potomac.edu/wp-content/uploads/2020/04/high-paying-career-advantages-e1587626053819.jpg" class="card-img-top img-fluid" alt="...">
+					            <div class="card-body">
+					                <h5 class="card-title">${loonstrook.periode}</h5>
+					                <p class="card-text">€${loonstrook.salarisBedrag}</p>
+					                <div class="d-flex justify-content-between">
+					                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loonstrookModal" onclick="gotoLoonstrook(${loonstrook.id})">
+					                        Informatie
+					                    </button>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+					    `;
 					});
+
+					document.getElementById("loonstroken-row").innerHTML = html;
+				});
 			}
 
 			document.addEventListener("DOMContentLoaded", function (event) {
