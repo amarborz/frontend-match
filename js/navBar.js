@@ -1,4 +1,5 @@
-const backendPath = 'https://yc2310-match-backend.azurewebsites.net/'
+const backendPath = 'https://match-backend.azurewebsites.net/'
+// const backendPath = 'https://yc2310-match-backend.azurewebsites.net/'
 // const backendPath = 'http://localhost:8080/'
 
 const profile = localStorage.getItem('role')
