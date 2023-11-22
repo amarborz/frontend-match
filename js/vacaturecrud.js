@@ -22,9 +22,7 @@ async function getVacatureById(id) {
 
 async function getVacatureByIdToEdit(id) {
 	try {
-		let response = await fetch(
-			`https://yc2310-match-backend.azurewebsites.net/api/vacature/${id}`
-		)
+		let response = await fetch(`${backendPath}api/vacature/${id}`)
 		let vacature = await response.json()
 		return vacature
 	} catch (error) {
@@ -52,16 +50,13 @@ async function postVacature(vacature) {
 async function putVacature(vacature) {
 	try {
 		console.log(vacature)
-		await fetch(
-			`https://yc2310-match-backend.azurewebsites.net/api/vacature/${vacature.id}`,
-			{
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(vacature),
-			}
-		)
+		await fetch(`${backendPath}api/vacature/${vacature.id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(vacature),
+		})
 		console.log('success')
 	} catch (error) {
 		console.error('Error fetching data:', error)
