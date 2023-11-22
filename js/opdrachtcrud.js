@@ -62,3 +62,34 @@ function dummyOpdracht() {
 	}
 	return opdracht
 }
+
+async function putOpdracht(opdracht, opdrachtId) {
+	console.log(opdracht)
+	console.log(opdrachtId)
+	try {
+		await fetch(`${backendPath}api/opdracht/${opdrachtId}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(opdracht),
+		})
+	} catch (error) {
+		console.error('Error fetching data:', error)
+	}
+	window.location.href = "talentmanagerMatches.html"
+}
+
+function updateOpdracht(opdrachtId) {
+	let updatedOpdracht = {
+		status: document.getElementById("statusDropdown").value,
+		startDatum: document.getElementById("startDatum").value,
+		eindDatum: document.getElementById("eindDatum").value,
+	}
+
+	try {
+		putOpdracht(updatedOpdracht, opdrachtId)
+	} catch (error) {
+		console.error(`Error updating`, error)
+	}
+}

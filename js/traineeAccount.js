@@ -1,20 +1,26 @@
-let traineeId = localStorage.getItem('id')
+let traineeId = localStorage.getItem("id");
 
-document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener("DOMContentLoaded", async function () {
 	try {
-		const trainee = await getTraineeById(traineeId)
-		populateFields(trainee)
+		const trainee = await getTraineeById(traineeId);
+		populateFields(trainee);
 	} catch (error) {
-		console.error('Error fetching trainee data:', error)
+		console.error("Error fetching trainee data:", error);
 	}
-})
+});
 
 function populateFields(trainee) {
 	// Display trainee info
 	document.getElementById("nameInput").value = trainee.naam;
 	document.getElementById("emailInput").value = trainee.email;
 	document.getElementById("telefoonnummerInput").value = trainee.telefoon;
-	document.getElementById("uitstroomDropdown").value = trainee.richting;
+
+	// Check if trainee.richting is empty
+	if (!trainee.richting == "") {
+		// If not empty, set the dropdown to the trainee.richting value
+		document.getElementById("uitstroomDropdown").value = trainee.richting;
+	}
+
 	document.getElementById("motivatieInput").value = trainee.motivatie;
 	document.getElementById("bioInput").value = trainee.bio;
 	document.getElementById("woonplaatsInput").value = trainee.woonplaats;
@@ -37,8 +43,8 @@ function putTrainee() {
 
 	// Update the trainee
 	try {
-		updateTrainee(traineeId, updatedTrainee)
+		updateTrainee(traineeId, updatedTrainee);
 	} catch (error) {
-		console.error(`Error updating`, error)
+		console.error(`Error updating`, error);
 	}
 }

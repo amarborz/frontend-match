@@ -1,107 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Matches</title>
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-			crossorigin="anonymous"
-		/>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-			crossorigin="anonymous"
-		></script>
-		<script src="../js/vacaturecrud.js"></script>
-		<script src="../js/talentmanagercrud.js"></script>
-		<script src="../js/loonstrookcrud.js"></script>
-		<script src="../js/navBar.js"></script>
-		<script src="../js/footer.js"></script>
-	</head>
 
-	<body class="bg-light">
-		<script>
-			let talentmanagerId // talentmanagerId is afhankelijk van wie er ingelogd is
-			loadNavBar()
-		</script>
-		<!-- Overzicht trainees -->
-		<div class="container my-5">
-			<div class="row">
-				<div class="col-12">
-					<h1 id="talentmanager_id_matches" class="display-4 text-center mt-5">
-						Matches
-					</h1>
-				</div>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Matches</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+	<script src="../js/vacaturecrud.js"></script>
+	<script src="../js/talentmanagercrud.js"></script>
+	<script src="../js/loonstrookcrud.js"></script>
+	<script src="../js/navBar.js"></script>
+	<script src="../js/footer.js"></script>
+</head>
+
+<body class="bg-light">
+	<script>
+		let talentmanagerId // talentmanagerId is afhankelijk van wie er ingelogd is
+		loadNavBar()
+	</script>
+	<!-- Overzicht trainees -->
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-12">
+				<h1 id="talentmanager_id_matches" class="display-4 text-center mt-5">
+					Matches
+				</h1>
 			</div>
-			<div class="row" id="trainees-row"></div>
 		</div>
+		<div class="row" id="trainees-row"></div>
+	</div>
 
-		<!-- Per vacature knopje 'informatie' die leidt naar de vacature -->
-		<div
-			class="modal fade"
-			id="matchModal"
-			tabindex="-1"
-			aria-labelledby="matchModalLabel"
-			aria-hidden="true"
-		>
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="matchModalLabel">Opdracht</h5>
-						<button
-							type="button"
-							class="btn-close"
-							data-bs-dismiss="modal"
-							aria-label="Close"
-						></button>
-					</div>
-					<div class="modal-body" id="opdrachtVanTalentmanagerInfo">
-						<!-- Vacature details will be displayed here -->
-					</div>
+	<!-- Per vacature knopje 'informatie' die leidt naar de vacature -->
+	<div class="modal fade" id="matchModal" tabindex="-1" aria-labelledby="matchModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="matchModalLabel">Opdracht</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" id="opdrachtVanTalentmanagerInfo">
+					<!-- Vacature details will be displayed here -->
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<script>
-			function loadMatches(id) {
-				fetch(`${backendPath}api/talentmanager/${id}/trainee-status`)
-					.then((res) => res.json())
-					.then((data) => {
-						console.log('data: ', data)
-						let html = ''
+	<script>
+		function loadMatches(id) {
+			fetch(`${backendPath}api/talentmanager/${id}/trainee-status`)
+				.then((res) => res.json())
+				.then((data) => {
+					let html = ''
 
-						data.forEach((match) => {
-							html += `
+					data.forEach((match) => {
+						html += `
                         <div class="col-12 col-md-4 col-lg-3 mt-4">
                             <div class="card">
-                                <img src="../img/${match.foto}" class="card-img-top" alt="...">
+                                <img src="${match.foto}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title"><strong>Vacature: </strong>${match.titel}</h5>
 									<p class="card-text"><strong>Werkgever: </strong>${match.opdrachtgeverNaam}</p>
                                     <p class="card-text"><strong>Trainee: </strong>${match.naam}</p>
 									<p class="card-text"><strong>Status: </strong>${match.status}</p>
 									<p class="card-text"><strong>Richting: </strong>${match.richting}</p>
-                                    <div class="d-flex justify-content-between">
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#matchModal" onclick="getOpdrachtVanTalentmanagerById(${id},${match.opdrachtId})">
-                                            Informatie
-                                        </button>
-                                    </div>
+                                    <div class = ""row buttons-row d-flex justify-content-evenly">
+										<div class="col-5 text-start">
+											<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#matchModal" onclick="getOpdrachtVanTalentmanagerById(${id},${match.opdrachtId})">
+												Informatie
+											</button>
+										</div>
+										<div class="col-5 text-start">
+											<button class="btn btn-primary" onclick="window.location.href='opdrachtAanpassen.html#' + ${match.opdrachtId}">
+												Aanpassen
+											</button>
+										</div>
+									</div>
+									
                                 </div>
                             </div>
                         </div>
                         `
-						})
-
-						document.getElementById('trainees-row').innerHTML = html
 					})
-			}
 
-			document.addEventListener('DOMContentLoaded', async function (event) {
-				let talentmanagerId = localStorage.getItem('id')
-				loadMatches(talentmanagerId)
+					document.getElementById('trainees-row').innerHTML = html
+				})
+		}
+
+		document.addEventListener('DOMContentLoaded', async function (event) {
+			let talentmanagerId = localStorage.getItem('id')
+			loadMatches(talentmanagerId)
 			//	opdrachtgever = await getOpdrachtgeverById(talentmanagerId)
 			//	document.getElementById(
 			//		'matchModalLabel'
@@ -109,11 +100,12 @@
 			//	document.getElementById(
 			//		'opdrachtgever_id_matches'
 			//	).innerHTML = `Matches van ${opdrachtgever.naam}`
-			})
-		</script>
+		})
+	</script>
 
-		<script>
-			loadFooter()
-		</script>
-	</body>
+	<script>
+		loadFooter()
+	</script>
+</body>
+
 </html>
