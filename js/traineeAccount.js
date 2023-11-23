@@ -26,6 +26,26 @@ function populateFields(trainee) {
 	document.getElementById("woonplaatsInput").value = trainee.woonplaats;
 	document.getElementById("fotoInput").src = trainee.foto;
 	document.getElementById("cvInput").value = trainee.cv;
+
+	if (!!trainee.talentmanagerDTO) {
+		document.getElementById("profile-talentmanager-found").classList.remove('d-none');
+		document.getElementById("profile-talentmanager-none").classList.add('d-none');
+
+		document.getElementById("profile-talentmanager-name").innerText = trainee.talentmanagerDTO.naam;
+		document.getElementById("profile-talentmanager-email").innerText = trainee.talentmanagerDTO.email;
+		document.getElementById("profile-talentmanager-telephone").innerText = trainee.talentmanagerDTO.telefoon;
+
+		if (!!trainee.talentmanagerDTO.foto) {
+			document.getElementById("profile-talentmanager-photo").src = trainee.talentmanagerDTO.foto;
+			document.getElementById("profile-talentmanager-photo").classList.remove('d-none')
+		} else {
+			document.getElementById("profile-talentmanager-photo").src = null;
+			document.getElementById("profile-talentmanager-photo").classList.add('d-none')
+		}
+	} else {
+		document.getElementById("profile-talentmanager-found").classList.add('d-none');
+		document.getElementById("profile-talentmanager-none").classList.remove('d-none');
+	}
 }
 
 function putTrainee() {

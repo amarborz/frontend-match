@@ -97,11 +97,11 @@
 						data.forEach((trainee) => {
 							console.log('traineeIds: ', traineeIds)
 							if (traineeIds.includes(trainee.id)) {
-								buttonClassMatch = 'btn btn-primary'
+								buttonClassMatch = 'btn btn-success'
 								buttonClassNoMatch = 'btn btn-secondary'
 							} else {
 								buttonClassMatch = 'btn btn-secondary'
-								buttonClassNoMatch = 'btn btn-primary'
+								buttonClassNoMatch = 'btn btn-danger'
 							}
 							const korteBio =
 								trainee.bio === null
@@ -133,7 +133,7 @@
 			                 </div>
 			                 
 			                 <div class=" d-flex justify-content-evenly col-10 mt-2">
-			                   <button class="btn btn-danger" style="font-size:10px; height:50px;" data-bs-toggle="modal" data-bs-target="#traineeModal" onclick="getDisplayTrainee(${trainee.id})"">
+			                   <button class="btn btn-primary" style="font-size:10px; height:50px;" data-bs-toggle="modal" data-bs-target="#traineeModal" onclick="getDisplayTrainee(${trainee.id})"">
 								Informatie
 			                   </button>
 			                 </div>
@@ -151,11 +151,11 @@
 				let matchButton = document.getElementById(`match-${traineeId}`)
 				let noMatchButton = document.getElementById(`no-match-${traineeId}`)
 				if (matchButton.classList.contains('btn-secondary')) {
-					matchButton.classList.add('btn-primary')
+					matchButton.classList.add('btn-success')
 					matchButton.classList.remove('btn-secondary')
 
 					noMatchButton.classList.add('btn-secondary')
-					noMatchButton.classList.remove('btn-primary')
+					noMatchButton.classList.remove('btn-danger')
 
 					console.log(
 						'match wordt gemaakt voor vaccature ',
@@ -176,11 +176,11 @@
 				let matchButton = document.getElementById(`match-${traineeId}`)
 				let noMatchButton = document.getElementById(`no-match-${traineeId}`)
 				console.log(matchButton.classList)
-				if (matchButton.classList.contains('btn-primary')) {
+				if (matchButton.classList.contains('btn-success')) {
 					matchButton.classList.add('btn-secondary')
-					matchButton.classList.remove('btn-primary')
+					matchButton.classList.remove('btn-success')
 
-					noMatchButton.classList.add('btn-primary')
+					noMatchButton.classList.add('btn-danger')
 					noMatchButton.classList.remove('btn-secondary')
 
 					let response = await fetch(

@@ -135,7 +135,7 @@
 
 							html += `
 			                  <div class="col-12 col-md-4 col-lg-3 mt-4">
-			                      <div class="card">
+			                      <div class="card" style="height:460px;">
 			                          <img src="${
 																	vacature.titel
 																		.toLowerCase()
@@ -191,10 +191,10 @@
 																		? '../img/low.png'
 																		: '../img/def.png'
 																}" class="card-img-top" alt="...">
-			                          <div class="card-body">
+			                          <div class="card-body d-flex flex-column">
 			                              <h5 class="card-title">${vacature.titel}</h5>
 			                              <p class="card-text">${summary}</p>
-			                              <div class="d-flex justify-content-evenly flex-wrap">
+			                              <div class="d-flex justify-content-evenly flex-wrap mt-auto">
 			                                  <button class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#vacatureModal" onclick="gotoVacature(${
 																					vacature.id
 																				})">
