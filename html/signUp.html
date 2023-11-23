@@ -24,132 +24,77 @@
 		<script src="../js/signUpcrud.js"></script>
 	</head>
 
-	<body>
-		<!-- Page content -->
-		<main>
-			<section class="container d-flex flex-column">
-				<div
-					class="row align-items-center justify-content-center g-0 min-vh-100"
-				>
-					<div class="col-lg-5 col-md-8 py-8 py-xl-0">
-						<!-- Card -->
-						<div class="card shadow">
-							<!-- Card body -->
-							<div class="card-body p-6">
-								<div class="mb-4">
-									<a href="../index.html">
-										<img
-											src="../icons/recruitment.svg"
-											alt="Recruitment Icon"
-											width="100"
-											height="100"
-										/>
-									</a>
-									<h1 class="mb-1 fw-bold">Sign up</h1>
-									<span
-										>Already have an account?
-										<a href="login.html" class="ms-1">Sign in</a></span
-									>
+<body>
+	<!-- Page content -->
+	<main>
+		<section class="container d-flex flex-column">
+			<div class="row align-items-center justify-content-center g-0 min-vh-100">
+				<div class="col-lg-5 col-md-8 py-8 py-xl-0">
+					<!-- Card -->
+					<div class="card shadow">
+						<!-- Card body -->
+						<div class="card-body p-6">
+							<div class="mb-4">
+								<a href="../index.html">
+									<img src="../icons/recruitment.svg" alt="Recruitment Icon" width="100"
+										height="100" />
+								</a>
+								<h1 class="mb-1 fw-bold">Sign up</h1>
+								<span>Already have an account?
+									<a href="login.html" class="ms-1">Sign in</a></span>
+							</div>
+							<!-- Form -->
+							<form id="signupForm" method="post">
+								<!-- Alert on successful sign up -->
+								<div class="alert alert-success alert-dismissible fade show" role="alert"
+									style="display: none">
+									Sign up successful!
+									<button type="button" class="btn-close" data-bs-dismiss="alert"
+										aria-label="Close"></button>
 								</div>
-								<!-- Form -->
-								<form id="signupForm" method="post">
-									<!-- Alert on successful sign up -->
-									<div
-										class="alert alert-success alert-dismissible fade show"
-										role="alert"
-										style="display: none"
-									>
-										Sign up successful!
-										<button
-											type="button"
-											class="btn-close"
-											data-bs-dismiss="alert"
-											aria-label="Close"
-										></button>
-									</div>
-									<!-- Email -->
-									<div class="mb-3">
-										<label for="email" class="form-label">Email</label>
-										<input
-											type="email"
-											id="email"
-											class="form-control"
-											name="email"
-											placeholder="Email address here"
-											required=""
-										/>
-									</div>
-									<!-- Password -->
-									<div class="mb-3">
-										<label for="password" class="form-label">Password</label>
-										<input
-											type="password"
-											id="password"
-											class="form-control"
-											name="password"
-											placeholder="**************"
-											required=""
-											autocomplete="off"
-										/>
-									</div>
-									<!-- Voornaam (First Name) -->
-									<div class="mb-3">
-										<label for="voornaam" class="form-label">Voornaam</label>
-										<input
-											type="text"
-											id="voornaam"
-											class="form-control"
-											name="voornaam"
-											placeholder="Your First Name"
-											required=""
-										/>
-									</div>
-									<!-- Achternaam (Last Name) -->
-									<div class="mb-3">
-										<label for="achternaam" class="form-label"
-											>Achternaam</label
-										>
-										<input
-											type="text"
-											id="achternaam"
-											class="form-control"
-											name="achternaam"
-											placeholder="Your Last Name"
-											required=""
-										/>
-									</div>
-									<!-- Telefoonnummer (Phone Number) -->
-									<div class="mb-3">
-										<label for="telefoonnummer" class="form-label"
-											>Telefoonnummer</label
-										>
-										<input
-											type="tel"
-											id="telefoonnummer"
-											class="form-control"
-											name="telefoonnummer"
-											placeholder="Your Phone Number"
-											required=""
-										/>
-									</div>
-									<!-- Persoon (Person Dropdown) -->
-									<div class="mb-3">
-										<label for="persoon" class="form-label">Persoon</label>
-										<select
-											class="form-select"
-											id="persoon"
-											name="persoon"
-											required
-										>
-											<option selected disabled value="">Select Persoon</option>
-											<option value="Trainee">Trainee</option>
-											<option value="Talent Manager">Talent Manager</option>
-											<option value="Opdrachtgever">Opdrachtgever</option>
-										</select>
-									</div>
+								<!-- Email -->
+								<div class="mb-3">
+									<label for="email" class="form-label">Email</label>
+									<input type="email" id="email" class="form-control" name="email"
+										placeholder="Email address here" required="" />
+								</div>
+								<!-- Password -->
+								<div class="mb-3">
+									<label for="password" class="form-label">Password</label>
+									<input type="password" id="password" class="form-control" name="password"
+										placeholder="**************" required="" autocomplete="off" />
+								</div>
+								<!-- Voornaam (First Name) -->
+								<div class="mb-3">
+									<label for="voornaam" class="form-label">Voornaam</label>
+									<input type="text" id="voornaam" class="form-control" name="voornaam"
+										placeholder="Your First Name" required="" />
+								</div>
+								<!-- Achternaam (Last Name) -->
+								<div class="mb-3">
+									<label for="achternaam" class="form-label">Achternaam</label>
+									<input type="text" id="achternaam" class="form-control" name="achternaam"
+										placeholder="Your Last Name" required="" />
+								</div>
+								<!-- Telefoonnummer (Phone Number) -->
+								<div class="mb-3">
+									<label for="telefoonnummer" class="form-label">Telefoonnummer</label>
+									<input type="tel" id="telefoonnummer" class="form-control" name="telefoonnummer"
+										placeholder="Your Phone Number" required="" />
+								</div>
+								<!-- Persoon (Person Dropdown) -->
+								<div class="mb-3">
+									<label for="persoon" class="form-label">Persoon</label>
+									<select class="form-select" id="persoon" name="persoon" required>
+										<option selected disabled value="">Select Persoon</option>
+										<option value="Trainee">Trainee</option>
+										<option value="Talent Manager">Talent Manager</option>
+										<option value="Opdrachtgever">Opdrachtgever</option>
+									</select>
+								</div>
 
-									<!-- Persoon (Person Dropdown) -->
-									<!-- <div class="mb-3">
+								<!-- Persoon (Person Dropdown) -->
+								<!-- <div class="mb-3">
 										<label for="persoon" class="form-label">Persoon</label>
 										<div class="dropdown">
 											<button
@@ -189,23 +134,23 @@
 											</ul>
 										</div>
 									</div> -->
-									<div>
-										<!-- Button -->
-										<div class="d-grid">
-											<button type="submit" class="btn btn-primary">
-												Create Free Account
-											</button>
-										</div>
+								<div>
+									<!-- Button -->
+									<div class="d-grid">
+										<button type="submit" class="btn btn-primary">
+											Create Free Account
+										</button>
 									</div>
-									<hr class="my-4" />
-									<div class="mt-4 text-center"></div>
-								</form>
-							</div>
+								</div>
+								<hr class="my-4" />
+								<div class="mt-4 text-center"></div>
+							</form>
 						</div>
 					</div>
 				</div>
-			</section>
-		</main>
+			</div>
+		</section>
+	</main>
 
 		<!-- JavaScript -->
 		<script>

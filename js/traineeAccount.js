@@ -27,6 +27,12 @@ function populateFields(trainee) {
 	document.getElementById("fotoInput").src = trainee.foto;
 	document.getElementById("cvInput").value = trainee.cv;
 
+	if (!!trainee.foto) {
+		document.getElementById("fotoInput").onclick = function() {
+			document.getElementById("show-profile-image").src = trainee.foto;
+		}
+	}
+
 	if (!!trainee.talentmanagerDTO) {
 		document.getElementById("profile-talentmanager-found").classList.remove('d-none');
 		document.getElementById("profile-talentmanager-none").classList.add('d-none');
@@ -38,9 +44,15 @@ function populateFields(trainee) {
 		if (!!trainee.talentmanagerDTO.foto) {
 			document.getElementById("profile-talentmanager-photo").src = trainee.talentmanagerDTO.foto;
 			document.getElementById("profile-talentmanager-photo").classList.remove('d-none')
+
+			document.getElementById("profile-talentmanager-photo").onclick = function() {
+				document.getElementById("show-profile-image").src = trainee.talentmanagerDTO.foto;
+			}
 		} else {
 			document.getElementById("profile-talentmanager-photo").src = null;
 			document.getElementById("profile-talentmanager-photo").classList.add('d-none')
+
+			document.getElementById("profile-talentmanager-photo").click = function() {}
 		}
 	} else {
 		document.getElementById("profile-talentmanager-found").classList.add('d-none');

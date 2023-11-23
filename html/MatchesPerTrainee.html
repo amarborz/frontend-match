@@ -149,11 +149,9 @@
 									<p class="card-text"><strong>Status: </strong>${vacature.status}</p>
 									<p class="card-text">${summary}</p>
                                     <div class="d-flex justify-content-between">
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#vacatureModal" onclick="getOpdrachtVanTraineeById(${traineeId},${
-								vacature.opdrachtId
-							})">
-                                            Informatie
-                                        </button>
+										<button class="btn btn-primary" onclick="window.location.href='opdrachtAanpassen.html#' + ${vacature.opdrachtId}">
+											Details
+										</button>
                                     </div>
                                 </div>
                             </div>

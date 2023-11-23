@@ -64,6 +64,9 @@ function displayOpdrachtVanOpdrachtgeverInfo(opdracht) {
             <h3 class="text-primary">${opdracht.naam}</h3>
 			<p class="card-text"><strong>Titel Vacature:</strong> ${opdracht.titel}</p>
 			<p class="card-text"><strong>Richting:</strong> ${opdracht.richting}</p>
+			<p class="card-text"><strong>Bio:</strong> ${opdracht.bio}</p>
+			<p class="card-text"><strong>Ervaring:</strong> ${opdracht.cv}</p>
+			<p class="card-text"><strong>Motivatie:</strong> ${opdracht.motivatie}</p>
             <p class="card-text"><strong>Status:</strong> ${opdracht.status}</p>
             <p class="card-text"><strong>E-mail:</strong> ${opdracht.email}</p>
             <p class="card-text"><strong>Telefoon:</strong> ${opdracht.telefoon}</p>

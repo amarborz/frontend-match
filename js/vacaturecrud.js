@@ -10,7 +10,6 @@ async function getVacatureById1(id) {
 }
 
 async function getVacatureById2(id) {
-	console.log("2")
 	try {
 		let response = await fetch(`${backendPath}api/vacature/${id}`)
 		let vacature = await response.json()
@@ -43,7 +42,6 @@ async function getVacatureByIdToEdit(id) {
 }
 
 async function postVacature(vacature) {
-	// let opdrachtgeverId = localStorage.getItem("id")
 	let opdrachtgeverId = localStorage.getItem('id')
 	try {
 		await fetch(`${backendPath}api/vacature/${opdrachtgeverId}`, {
@@ -97,6 +95,7 @@ function displayVacatureInfo(vacature) {
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">${vacature.titel}</h3>
+							<h6 class="card-title">${vacature.opdrachtgeverNaam}</h6>
                             <p class="card-text"><strong>Plaats:</strong> ${vacature.plaats}</p>
                             <p class="card-text"><strong>Adres:</strong> ${vacature.adres}</p>
                             <p class="card-text"><strong>Omschrijving:</strong> ${vacature.omschrijving}</p>
@@ -154,6 +153,61 @@ function displayVacatureInfo2(vacature) {
 					<div class="col-md-12 offset-md-2">
 						<div class="card">
 							<div class="card-body">
+							<img src="${
+								vacature.titel
+									.toLowerCase()
+									.includes('java') &&
+								vacature.titel
+									.toLowerCase()
+									.includes('junior')
+									? '../img/java.jpg'
+									: vacature.titel
+											.toLowerCase()
+											.includes('java')
+									? '../img/java2.png'
+									: vacature.titel
+											.toLowerCase()
+											.includes('devops') &&
+									  vacature.titel
+											.toLowerCase()
+											.includes('junior')
+									? '../img/devops.png'
+									: vacature.titel
+											.toLowerCase()
+											.includes('devops')
+									? '../img/devops2.jpg'
+									: vacature.titel
+											.toLowerCase()
+											.includes('data') &&
+									  vacature.titel
+											.toLowerCase()
+											.includes('junior')
+									? '../img/data.jpg'
+									: vacature.titel
+											.toLowerCase()
+											.includes('data')
+									? '../img/data2.jpg'
+									: vacature.titel
+											.toLowerCase()
+											.includes('business') &&
+									  vacature.titel
+											.toLowerCase()
+											.includes('junior')
+									? '../img/def2.jpg'
+									: vacature.titel
+											.toLowerCase()
+											.includes('business')
+									? '../img/business2.png'
+									: vacature.titel
+											.toLowerCase()
+											.includes('power')
+									? '../img/power2.png'
+									: vacature.titel
+											.toLowerCase()
+											.includes('outsystems')
+									? '../img/low.png'
+									: '../img/def.png'
+							}" class="card-img-top" alt="...">
 								<h3 class="card-title">${vacature.titel}</h3>
 								<p class="card-text"><strong>Opdrachtgever:</strong> ${vacature.opdrachtgeverNaam}</p>
 								<p class="card-text"><strong>Plaats:</strong> ${vacature.plaats}</p>

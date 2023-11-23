@@ -61,7 +61,7 @@ async function postTrainee(trainee) {
 }
 
 async function getDisplayTrainee(traineeId) {
-	trainee = await getTraineeById(traineeId);
+	let trainee = await getTraineeById(traineeId);
 	displayTraineeInfo(trainee);
 }
 
@@ -75,6 +75,7 @@ function displayTraineeInfo(trainee) {
             <p class="card-text"><strong>Telefoon:</strong> ${trainee.telefoon}</p>
             <p class="card-text"><strong>Richting:</strong> ${trainee.richting}</p>
             <p class="card-text"><strong>Motivatie:</strong> ${trainee.motivatie}</p>
+			<p class="card-text"><strong>Ervaring:</strong> ${trainee.cv}</p>
             <p class="card-text"><strong>Bio:</strong> ${trainee.bio}</p>
         </div>
         <div class="col-md-6">
@@ -98,6 +99,7 @@ function displayTraineeInfo1(trainee) {
 						<p class="card-text"><strong>Telefoon:</strong> ${trainee.telefoon}</p>
 						<p class="card-text"><strong>Richting:</strong> ${trainee.richting}</p>
 						<p class="card-text"><strong>Motivatie:</strong> ${trainee.motivatie}</p>
+						<p class="card-text"><strong>Ervaring:</strong> ${trainee.cv}</p>
 						<p class="card-text"><strong>Bio:</strong> ${trainee.bio}</p>
 					</div>
 				</div>
@@ -113,16 +115,16 @@ function displayOpdrachtVanTraineeInfo(opdracht) {
 	);
 	opdrachtVanTraineeInfoDiv.innerHTML = `
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h3 class="text-primary">${opdracht.naam}</h3>
 			<p class="card-text"><strong>Titel:</strong> ${opdracht.titel}</p>
-			<p class="card-text"><strong>Uren:</strong> ${opdracht.uren}</p>
+			<p class="card-text"><strong>Omschrijving:</strong> ${opdracht.vacatureOmschrijving}</p>
+			<p class="card-text"><strong>Vereisten:</strong> ${opdracht.vereisten}</p>
+			<p class="card-text"><strong>Plaats:</strong> ${opdracht.plaats}</p>
+			<p class="card-text"><strong>Adres:</strong> ${opdracht.adres}</p>
             <p class="card-text"><strong>Duur:</strong> ${opdracht.duur}</p>
             <p class="card-text"><strong>E-mail:</strong> ${opdracht.email}</p>
             <p class="card-text"><strong>Telefoon:</strong> ${opdracht.telefoon}</p>
-        </div>
-        <div class="col-md-6">
-            <img src="${opdracht.foto}" class="img-fluid">
         </div>
     </div>
         `;
