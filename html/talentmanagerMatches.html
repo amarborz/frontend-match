@@ -69,13 +69,8 @@
 									<p class="card-text"><strong>Richting: </strong>${match.richting}</p>
                                     <div class = ""row buttons-row d-flex justify-content-evenly">
 										<div class="col-5 text-start">
-											<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#matchModal" onclick="getOpdrachtVanTalentmanagerById(${id},${match.opdrachtId})">
-												Informatie
-											</button>
-										</div>
-										<div class="col-5 text-start">
 											<button class="btn btn-primary" onclick="window.location.href='opdrachtAanpassen.html#' + ${match.opdrachtId}">
-												Aanpassen
+												Details
 											</button>
 										</div>
 									</div>
@@ -93,13 +88,6 @@
 		document.addEventListener('DOMContentLoaded', async function (event) {
 			let talentmanagerId = localStorage.getItem('id')
 			loadMatches(talentmanagerId)
-			//	opdrachtgever = await getOpdrachtgeverById(talentmanagerId)
-			//	document.getElementById(
-			//		'matchModalLabel'
-			//	).innerHTML = `Matches van ${opdrachtgever.naam}`
-			//	document.getElementById(
-			//		'opdrachtgever_id_matches'
-			//	).innerHTML = `Matches van ${opdrachtgever.naam}`
 		})
 	</script>
 

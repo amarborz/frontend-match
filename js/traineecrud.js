@@ -84,6 +84,29 @@ function displayTraineeInfo(trainee) {
         `;
 }
 
+function displayTraineeInfo1(trainee) {
+	let traineeInfoDiv = document.getElementById("traineeCard");
+	traineeInfoDiv.innerHTML = `
+    <div class="container">
+		<div class="row">
+			<div class="col-md-12 offset-md-2">
+        		<div class="card">
+					<img src="${trainee.foto}" class="img-fluid">
+					<div class="card-body">
+						<h5 class="text-primary">${trainee.naam}</h5>
+						<p class="card-text"><strong>E-mail:</strong> ${trainee.email}</p>
+						<p class="card-text"><strong>Telefoon:</strong> ${trainee.telefoon}</p>
+						<p class="card-text"><strong>Richting:</strong> ${trainee.richting}</p>
+						<p class="card-text"><strong>Motivatie:</strong> ${trainee.motivatie}</p>
+						<p class="card-text"><strong>Bio:</strong> ${trainee.bio}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+        `;
+}
+
 function displayOpdrachtVanTraineeInfo(opdracht) {
 	let opdrachtVanTraineeInfoDiv = document.getElementById(
 		"opdrachtVanTraineeInfo"

@@ -13,6 +13,7 @@ async function getOpdrachtById() {
 	}
 }
 
+
 async function postOpdracht(opdracht, vacatureId, traineeId) {
 	try {
 		await fetch(`${backendPath}api/opdracht/${vacatureId}/${traineeId}`, {
