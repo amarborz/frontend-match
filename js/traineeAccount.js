@@ -70,8 +70,8 @@ function putTrainee() {
 		bio: document.getElementById("bioInput").value,
 		woonplaats: document.getElementById("woonplaatsInput").value,
 		cv: document.getElementById("cvInput").value,
+		foto: document.getElementById("fotoInput").src,
 	};
-	// foto: document.getElementById("fotoInput").src
 
 	// Update the trainee
 	try {
