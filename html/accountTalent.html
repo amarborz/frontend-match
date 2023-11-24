@@ -17,7 +17,7 @@
 			crossorigin="anonymous"
 		></script>
 		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
+		<script src="../js/accountAlert.js"></script>
 		<script src="../js/talentmanagercrud.js"></script>
 		<script src="../js/talentmanagerAccount.js"></script>
 		<script src="../js/navBar.js"></script>
@@ -25,8 +25,11 @@
 	</head>
 
 	<body class="bg-light">
+		<div class="alert alert-success mt-5" role="alert" id="notification" hidden>
+			Het is gelukt!
+		</div>
 		<script>
-			loadNavBar()
+			loadNavBar();
 		</script>
 		<!-- Persoonsgegevens Section -->
 		<div class="container my-5" style="margin-top: 100px !important">
@@ -109,7 +112,7 @@
 
 		<!-- Footer -->
 		<script>
-			loadFooter()
+			loadFooter();
 		</script>
 	</body>
 </html>

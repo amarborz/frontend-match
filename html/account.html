@@ -1,185 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Mijn Account</title>
+		<link rel="icon" type="image/x-icon" href="../icons/favicon.ico" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+			crossorigin="anonymous"
+		></script>
+		<script src="../js/accountAlert.js"></script>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script src="../js/traineecrud.js"></script>
+		<script src="../js/traineeAccount.js"></script>
+		<script src="../js/navBar.js"></script>
+		<script src="../js/footer.js"></script>
+	</head>
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Mijn Account</title>
-	<link rel="icon" type="image/x-icon" href="../icons/favicon.ico" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-		crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-	<script src="../js/traineecrud.js"></script>
-	<script src="../js/traineeAccount.js"></script>
-	<script src="../js/navBar.js"></script>
-	<script src="../js/footer.js"></script>
-</head>
+	<body class="bg-light">
+		<div class="alert alert-success mt-5" role="alert" id="notification" hidden>
+			Het is gelukt!
+		</div>
+		<script>
+			loadNavBar();
+		</script>
 
-<body class="bg-light">
-	<script>
-		loadNavBar()
-	</script>
-	<!-- Persoonsgegevens Section -->
-	<div class="container my-5" style="margin-top: 100px !important">
-		<div class="section">
-			<h2 class="fw-bold mb-4">Persoonsgegevens</h2>
-			<div class="card">
-				<div class="card-body">
-					<form>
-						<!-- Naam -->
-						<div class="mb-3">
-							<label for="nameInput" class="form-label">Naam</label>
-							<input type="text" class="form-control" id="nameInput" aria-describedby="nameHelp" />
-							<div id="nameHelp" class="form-text">
-								Vul hier jouw naam in.
+		<!-- Persoonsgegevens Section -->
+		<div class="container my-5" style="margin-top: 100px !important">
+			<div class="section">
+				<h2 class="fw-bold mb-4">Persoonsgegevens</h2>
+				<div class="card">
+					<div class="card-body">
+						<form>
+							<!-- Naam -->
+							<div class="mb-3">
+								<label for="nameInput" class="form-label">Naam</label>
+								<input
+									type="text"
+									class="form-control"
+									id="nameInput"
+									aria-describedby="nameHelp"
+								/>
+								<div id="nameHelp" class="form-text">
+									Vul hier jouw naam in.
+								</div>
 							</div>
-						</div>
-						<!-- Email Adres -->
-						<div class="mb-3">
-							<label for="emailInput" class="form-label">Email Adres</label>
-							<input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" />
-							<div id="emailHelp" class="form-text">
-								Vul hier jouw email adres in.
+							<!-- Email Adres -->
+							<div class="mb-3">
+								<label for="emailInput" class="form-label">Email Adres</label>
+								<input
+									type="email"
+									class="form-control"
+									id="emailInput"
+									aria-describedby="emailHelp"
+								/>
+								<div id="emailHelp" class="form-text">
+									Vul hier jouw email adres in.
+								</div>
 							</div>
-						</div>
-						<!-- Telefoonnummer -->
-						<div class="mb-3">
-							<label for="telefoonnummerInput" class="form-label">Telefoonnummer</label>
-							<input type="text" class="form-control" id="telefoonnummerInput"
-								aria-describedby="telefoonnummerHelp" />
-							<div id="telefoonnummerHelp" class="form-text">
-								Vul hier jouw telefoonnummer in.
+							<!-- Telefoonnummer -->
+							<div class="mb-3">
+								<label for="telefoonnummerInput" class="form-label"
+									>Telefoonnummer</label
+								>
+								<input
+									type="text"
+									class="form-control"
+									id="telefoonnummerInput"
+									aria-describedby="telefoonnummerHelp"
+								/>
+								<div id="telefoonnummerHelp" class="form-text">
+									Vul hier jouw telefoonnummer in.
+								</div>
 							</div>
-						</div>
-						<!-- Woonplaats -->
-						<div class="mb-3">
-							<label for="woonplaatsInput" class="form-label">Woonplaats</label>
-							<input type="text" class="form-control" id="woonplaatsInput"
-								aria-describedby="woonplaatsHelp" />
-							<div id="woonplaatsHelp" class="form-text">
-								Vul hier jouw woonplaats in.
+							<!-- Woonplaats -->
+							<div class="mb-3">
+								<label for="woonplaatsInput" class="form-label"
+									>Woonplaats</label
+								>
+								<input
+									type="text"
+									class="form-control"
+									id="woonplaatsInput"
+									aria-describedby="woonplaatsHelp"
+								/>
+								<div id="woonplaatsHelp" class="form-text">
+									Vul hier jouw woonplaats in.
+								</div>
 							</div>
-						</div>
 
-						<!-- Submit button -->
-						<button type="button" class="btn btn-primary" id="submitBtn" onclick="putTrainee()">
-							Submit
-						</button>
-					</form>
+							<!-- Submit button -->
+							<button
+								type="button"
+								class="btn btn-primary"
+								id="submitBtn"
+								onclick="putTrainee()"
+							>
+								Submit
+							</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Profiel Section -->
-	<div class="container my-5">
-		<div class="section">
-			<h2 class="fw-bold mb-4">Talentmanager</h2>
-			<div class="card">
-				<div class="card-body" id="profile-talentmanager-none">
-					<span>Jij hebt nog geen toegewezen talentmanager</span>
-				</div>
-				<div class="card-body d-none" id="profile-talentmanager-found">
-					<div class="container">
-						<div class="row">
-							<div class="col-12">
-								Naam: <span id="profile-talentmanager-name"></span><br>
-								Email: <span id="profile-talentmanager-email"></span><br>
-								Telefoon: <span id="profile-talentmanager-telephone"></span><br>
-							</div>
-							<div class="col-12">
-								<img src="" data-bs-toggle="modal" data-bs-target="#showProfileImageModal" class="img-fluid w-25" id="profile-talentmanager-photo">
+		<!-- Profiel Section -->
+		<div class="container my-5">
+			<div class="section">
+				<h2 class="fw-bold mb-4">Talentmanager</h2>
+				<div class="card">
+					<div class="card-body" id="profile-talentmanager-none">
+						<span>Jij hebt nog geen toegewezen talentmanager</span>
+					</div>
+					<div class="card-body d-none" id="profile-talentmanager-found">
+						<div class="container">
+							<div class="row">
+								<div class="col-12">
+									Naam: <span id="profile-talentmanager-name"></span><br />
+									Email: <span id="profile-talentmanager-email"></span><br />
+									Telefoon: <span id="profile-talentmanager-telephone"></span
+									><br />
+								</div>
+								<div class="col-12">
+									<img
+										src=""
+										data-bs-toggle="modal"
+										data-bs-target="#showProfileImageModal"
+										class="img-fluid w-25"
+										id="profile-talentmanager-photo"
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Profiel Section -->
-	<div class="container">
-		<div class="section">
-			<h2 class="fw-bold mb-4">Profiel</h2>
-			<div class="card">
-				<div class="card-body">
-					<form>
-						<!-- Uitstroomrichting -->
-						<div class="mb-3">
-							<label for="uitstroomrichtingInput" class="form-label">Uitstroomrichting</label>
-							<div class="dropdown">
-								<select class="form-select" id="uitstroomDropdown" aria-label="Default select example">
-									<option selected disabled>Selecteer</option>
-									<option value="Dev Ops">Dev Ops</option>
-									<option value="Low Code">Low Code</option>
-									<option value="Data Analist">Data Analist</option>
-									<option value="Big Data">Big Data</option>
-									<option value="Java">Java</option>
-								</select>
+		<!-- Profiel Section -->
+		<div class="container">
+			<div class="section">
+				<h2 class="fw-bold mb-4">Profiel</h2>
+				<div class="card">
+					<div class="card-body">
+						<form>
+							<!-- Uitstroomrichting -->
+							<div class="mb-3">
+								<label for="uitstroomrichtingInput" class="form-label"
+									>Uitstroomrichting</label
+								>
+								<div class="dropdown">
+									<select
+										class="form-select"
+										id="uitstroomDropdown"
+										aria-label="Default select example"
+									>
+										<option selected disabled>Selecteer</option>
+										<option value="Dev Ops">Dev Ops</option>
+										<option value="Low Code">Low Code</option>
+										<option value="Data Analist">Data Analist</option>
+										<option value="Big Data">Big Data</option>
+										<option value="Java">Java</option>
+									</select>
+								</div>
 							</div>
-						</div>
-						<!-- Profielfoto -->
-						<div class="mb-3">
-							<label for="Profielfoto" class="form-label">Profielfoto</label>
-							<br />
-							<img src="" data-bs-toggle="modal" data-bs-target="#showProfileImageModal" id="fotoInput" alt="Profielfoto" class="w-25" />
-						</div>
-						<!-- CV -->
-						<div class="mb-3">
-							<label for="cvInput" class="form-label">CV</label>
-							<textarea class="form-control" id="cvInput" aria-describedby="cvHelp"></textarea>
-							<div id="cvHelp" class="form-text">Vul hier jouw CV in.</div>
-						</div>
-						<!-- Motivatie -->
-						<div class="mb-3">
-							<label for="motivatieInput" class="form-label">Motivatie</label>
-							<textarea class="form-control" id="motivatieInput"
-								aria-describedby="motivatieHelp"></textarea>
-							<div id="motivatieHelp" class="form-text">
-								Vul hier jouw motivatie in.
+							<!-- Profielfoto -->
+							<div class="mb-3">
+								<label for="Profielfoto" class="form-label">Profielfoto</label>
+								<br />
+								<img
+									src=""
+									data-bs-toggle="modal"
+									data-bs-target="#showProfileImageModal"
+									id="fotoInput"
+									alt="Profielfoto"
+									class="w-25"
+								/>
 							</div>
-						</div>
-						<!-- Bio -->
-						<div class="mb-3">
-							<label for="bioInput" class="form-label">Bio</label>
-							<textarea class="form-control" id="bioInput" aria-describedby="bioHelp">
+							<!-- CV -->
+							<div class="mb-3">
+								<label for="cvInput" class="form-label">CV</label>
+								<textarea
+									class="form-control"
+									id="cvInput"
+									aria-describedby="cvHelp"
+								></textarea>
+								<div id="cvHelp" class="form-text">Vul hier jouw CV in.</div>
+							</div>
+							<!-- Motivatie -->
+							<div class="mb-3">
+								<label for="motivatieInput" class="form-label">Motivatie</label>
+								<textarea
+									class="form-control"
+									id="motivatieInput"
+									aria-describedby="motivatieHelp"
+								></textarea>
+								<div id="motivatieHelp" class="form-text">
+									Vul hier jouw motivatie in.
+								</div>
+							</div>
+							<!-- Bio -->
+							<div class="mb-3">
+								<label for="bioInput" class="form-label">Bio</label>
+								<textarea
+									class="form-control"
+									id="bioInput"
+									aria-describedby="bioHelp"
+								>
 								</textarea>
-							<div id="bioHelp" class="form-text">Vul hier jouw bio in.</div>
-						</div>
-						<!-- Submit button -->
-						<button type="button" class="btn btn-primary" id="submitBtn2" onclick="putTrainee()">
-							Submit
+								<div id="bioHelp" class="form-text">Vul hier jouw bio in.</div>
+							</div>
+							<!-- Submit button -->
+							<button
+								type="button"
+								class="btn btn-primary"
+								id="submitBtn2"
+								onclick="putTrainee()"
+							>
+								Submit
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="modal fade"
+			id="showProfileImageModal"
+			tabindex="-1"
+			aria-labelledby="showProfileImageModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-lg modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="showProfileImageModalLabel">
+							Image Title
+						</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<img
+							src=""
+							alt="Profile image"
+							class="img-fluid"
+							id="show-profile-image"
+						/>
+					</div>
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-success"
+							data-bs-dismiss="modal"
+						>
+							Close
 						</button>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="modal fade" id="showProfileImageModal" tabindex="-1" aria-labelledby="showProfileImageModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg modal-dialog-scrollable">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="showProfileImageModalLabel">Image Title</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<img src="" alt="Profile image" class="img-fluid" id="show-profile-image">
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Footer -->
-	<script>
-		loadFooter()
-	</script>
-</body>
-
+		<!-- Footer -->
+		<script>
+			loadFooter();
+		</script>
+	</body>
 </html>
